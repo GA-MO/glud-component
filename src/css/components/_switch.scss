@@ -1,0 +1,59 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  padding: 5px 0;
+  margin-right: 1em
+}
+.lbl {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 20px;
+  width: 44px;
+  background: #898989;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.lbl:after {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 100px;
+  background: #eee;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+  content: '';
+  transition: all 0.3s ease;
+}
+.lbl:active:after {
+  transform: scale(1.15, 0.85);
+}
+.cbx {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+.cbx:checked ~ label {
+  background: rgba($primary, 0.5);
+}
+.cbx:checked ~ label:after {
+  left: 20px;
+  background: $primary;
+}
+.cbx:disabled ~ label {
+  background: #d5d5d5;
+  pointer-events: none;
+}
+.cbx:disabled ~ label:after {
+  background: #bcbdbc;
+}

@@ -1,0 +1,20 @@
+.pretty {
+  font-size: 1rem;
+}
+.pretty.p-icon .state .icon {
+  background: $primary;
+  color: #fff;
+  font-size: 0.7em;
+  width: calc(1em + 7px);
+  height: calc(1em + 7px);
+  top: calc((0% - (100% - 1.5em)) - 13%);
+}
+.pretty .state label:before {
+  border: 1px solid $primary;
+}
+.pretty.p-default input:checked ~ .state label:after {
+  background-color: $primary !important;
+}
+.pretty input[disabled] ~ * {
+  opacity: .2;
+}
