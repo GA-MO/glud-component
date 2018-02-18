@@ -9,7 +9,7 @@ module.exports = {
       base: '#333',
       light: '#999',
       lightest: '#ccc',
-      link: '#fff',
+      link: '#999',
       linkHover: '#f28a25',
       border: '#e8e8e8',
       name: '#363636',
@@ -49,7 +49,7 @@ module.exports = {
     const arrDir = dir.split('/')
     const componentName = arrDir[arrDir.length - 1]
 
-    return `import { ${componentName} } from '${packageInfo.name}'`
+    return `import ${componentName} from '${packageInfo.name}/${componentName}'`
   },
   webpackConfig: require('./configs/webpack.config.dev.js')
 }
