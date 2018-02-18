@@ -4,7 +4,7 @@
   padding: 5px 0;
   margin-right: 1em
 }
-.lbl {
+.ui-switch {
   position: relative;
   z-index: 1;
   display: block;
@@ -15,7 +15,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.lbl:after {
+.ui-switch:after {
   position: absolute;
   left: -2px;
   top: -3px;
@@ -28,7 +28,7 @@
   content: '';
   transition: all 0.3s ease;
 }
-.lbl:active:after {
+.ui-switch:active:after {
   transform: scale(1.15, 0.85);
 }
 .cbx {

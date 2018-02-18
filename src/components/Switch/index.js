@@ -39,9 +39,10 @@ export default class Switch extends PureComponent {
           type='checkbox'
           className='cbx'
           checked={isChecked}
+          readOnly='readOnly'
           onClick={this.handleCheckboxChange}
         />
-        <label className='lbl' />
+        <label className='ui-switch' />
       </div>
     )
 

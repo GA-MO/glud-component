@@ -49,6 +49,7 @@ export default class Checkbox extends PureComponent {
           type='checkbox'
           value={value}
           checked={isChecked}
+          readOnly='readOnly'
           disabled={disabled}
         />
         <label onClick={disabled ? null : this.handleCheckboxChange}>

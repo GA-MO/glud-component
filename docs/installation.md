@@ -1,9 +1,11 @@
-Install with npm or yarn
+### Install with npm
 
 ``
   npm install --save true-ui-component
 ``
 
+### Import component style
+
 ``
-  yarn add --save true-ui-component
+  import 'true-ui-component/build/style.css'
 ``

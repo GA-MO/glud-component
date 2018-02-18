@@ -56,6 +56,7 @@ export default class Radio extends Component {
         className='is-checkradio is-primary'
         name={this.props.name}
         checked={this.isChecked(option.value)}
+        readOnly='readOnly'
         disabled={option.disabled}
       />
       <label

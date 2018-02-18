@@ -42,14 +42,18 @@ module.exports = {
     {
       name: 'UI Components',
       components: 'src/components/**/index.js'
+    },
+    {
+      components: 'src/components/style.js'
     }
   ],
   getComponentPathLine (componentPath) {
     const dir = path.dirname(componentPath)
     const arrDir = dir.split('/')
     const componentName = arrDir[arrDir.length - 1]
+    if (componentName === 'components') return ''
 
-    return `import ${componentName} from '${packageInfo.name}/${componentName}'`
+    return `import { ${componentName} } from '${packageInfo.name}'`
   },
   webpackConfig: require('./configs/webpack.config.dev.js')
 }
