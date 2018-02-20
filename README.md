@@ -1,38 +1,14 @@
-# react-redux-boilerplate
-React starter boilerplate for client and server rendering (Universal)
-# Features
+# glud-component
+React Components [UI Documents](http://glud-component.surge.sh/)
 
-- [React](https://github.com/facebook/react)
-- [React Router](https://github.com/rackt/react-router)
-- [React Router Redux](https://github.com/reactjs/react-router-redux)
-- [Redux](https://github.com/rackt/redux)
-- [Node sass](https://github.com/sass/node-sass)
-- [Mocha](https://github.com/mochajs/mocha)
+#### Install with npm
 
-# Getting Started
-```
-$ npm install
-$ npm run dev  
+```html static
+  npm install --save glud-component
 ```
 
-# Client: Build to production
+#### Import component style
 
+```html static
+  import 'glud-component/build/style.css'
 ```
-$ npm run build:client
-../build/
-deploy folder build
-```
-
-# Server rendering: Build to production
-
-```
-$ npm run build
-$ npm run start
-```
-
-# Testing
-```
-$ npm test
-```
-
-Thank you for your suggestions!

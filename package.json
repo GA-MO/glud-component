@@ -1,6 +1,6 @@
 {
-  "name": "true-ui-component",
-  "version": "0.0.4",
+  "name": "glud-component",
+  "version": "0.0.3",
   "description": "",
   "repository": {
     "url": "",
@@ -24,7 +24,7 @@
     "test": "npm run lint && better-npm-run test",
     "test:watch": "better-npm-run test:watch",
     "lint": "eslint ./src",
-    "prepublish": "npm run build:lib && npm run build",
+    "prepublish": "npm run build:lib && npm run build && npm run styleguide:build",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },

@@ -1,11 +1,11 @@
 #### Install with npm
 
 ```html static
-  npm install --save true-ui-component
+  npm install --save glud-component
 ```
 
 #### Import component style
 
 ```html static
-  import 'true-ui-component/build/style.css'
+  import 'glud-component/build/style.css'
 ```
