@@ -8,18 +8,24 @@ class Modal extends Component {
   static propTypes = {
     title: PropTypes.string,
     open: PropTypes.bool,
-    onClose: PropTypes.bool
+    inline: PropTypes.bool,
+    onClose: PropTypes.func
   }
 
   render () {
-    const { title, open, onClose, children } = this.props
-    const modalClass = classNames('modal', {
+    const { title, open, inline, onClose, children } = this.props
+    const modalClass = classNames('', {
+      modal: !inline,
       'is-active': open
     })
 
     return (
       <div className={modalClass}>
-        <div className='modal-background' onClick={() => onClose() || null} />
+        {!inline &&
+          <div
+            className='modal-background'
+            onClick={() => onClose() || null}
+          />}
         <div className='modal-card'>
           {title &&
             <header className='modal-card-head'>

@@ -62,21 +62,23 @@
 }
 .box-alert-message{
   position: fixed;
-  width: 700px;
+  width: 90%;
+  max-width: 700px;
   z-index: 3;
   left: 50%;
   top: 20px;
-  margin-left: -350px;
+  transform: translateX(-50%);
   background: #fff;
   padding: 20px;
   box-shadow: 0 0 64px rgba(0, 0, 0, 0.34);
   border-radius: 5px;
   font-weight: bold;
   color: #fff;
+
   h1{
     margin: 0;
   }
-  // .detail i.fa{font-size: 50px;}
+
   .close{
     position: absolute;
     right: 20px;
