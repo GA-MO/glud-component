@@ -37,7 +37,7 @@ class Card extends Component {
                 </div>
                 <a
                   href='javascript:;'
-                  className='card-header-icon'
+                  className='card-header-icon has-text-grey-dark'
                   aria-label='more options'
                   onClick={toggle}
                 >

@@ -19,6 +19,7 @@ Change the size and color of the text
 ```jsx
 <>
   <p className='has-text-primary'>.has-text-primary</p>
+  <p className='has-text-grey-dark'>.has-text-grey-dark</p>
   <p className='has-text-grey-light'>.has-text-grey-light</p>
   <p className='has-text-warning'>.has-text-warning</p>
   <p className='has-text-success'>.has-text-success</p>

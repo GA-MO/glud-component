@@ -4,9 +4,15 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
     </Card.Content>
     <Card.Footer>
-      <Card.FooterItem>Save</Card.FooterItem>
-      <Card.FooterItem>Edit</Card.FooterItem>
-      <Card.FooterItem>Delete</Card.FooterItem>
+      <Card.FooterItem onClick={() => null}>
+        <Icon icon='fas fa-save' />Save
+      </Card.FooterItem>
+      <Card.FooterItem onClick={() => null}>
+        <Icon icon='fas fa-edit' />Edit
+      </Card.FooterItem>
+      <Card.FooterItem onClick={() => null}>
+        <Icon icon='fas fa-trash' />Delete
+      </Card.FooterItem>
     </Card.Footer>
   </Card>
 ```

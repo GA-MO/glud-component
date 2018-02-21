@@ -9,7 +9,7 @@ export default class CardFooterItem extends Component {
   render () {
     const { children, onClick } = this.props
     return (
-      <a href='#' className='card-footer-item' onClick={onClick}>{children}</a>
+      <a href='javascript:;' className='card-footer-item has-text-grey-dark' onClick={onClick}>{children}</a>
     )
   }
 }
