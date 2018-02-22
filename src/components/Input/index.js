@@ -68,7 +68,7 @@ export default class Input extends PureComponent {
         className={classInput}
         type='text'
         name={name}
-        defaultValue={value}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
         onFocus={onFocus}

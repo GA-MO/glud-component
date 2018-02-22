@@ -74,7 +74,7 @@ export default class Select extends Component {
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          defaultValue={value}
+          value={value}
           disabled={disabled}
         >
           {options.map((option, i) => (
