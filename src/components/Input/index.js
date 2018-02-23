@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class Input extends PureComponent {
   static propTypes = {
     onlyContain: PropTypes.bool,
+    type: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string,
@@ -26,9 +27,14 @@ export default class Input extends PureComponent {
     iconRight: PropTypes.func
   }
 
+  static defaultProps = {
+    type: 'text'
+  }
+
   render () {
     const {
       onlyContain,
+      type,
       label,
       name,
       value,
@@ -66,7 +72,7 @@ export default class Input extends PureComponent {
     const inputField = (
       <input
         className={classInput}
-        type='text'
+        type={type}
         name={name}
         value={value}
         placeholder={placeholder}
@@ -111,7 +117,9 @@ export default class Input extends PureComponent {
 
     return (
       <div className='field'>
-        <label className='label'>{label} {isRequired && <i className='required fas fa-asterisk' />}</label>
+        <label className='label'>
+          {label} {isRequired && <i className='required fas fa-asterisk' />}
+        </label>
         <div className={classControl}>
           {inputField}
           {iconL}

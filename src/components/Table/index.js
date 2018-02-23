@@ -142,7 +142,6 @@ export default class Table extends PureComponent {
       elementBody,
       elementTD,
       pagination,
-      searchDisable,
       totalRecord,
       onChangePage,
       fieldsForSearch,
@@ -158,7 +157,7 @@ export default class Table extends PureComponent {
 
     return (
       <div>
-        {!searchDisable &&
+        {fieldsForSearch &&
           <Row>
             <Column D={6}>
               <SmartSearch
