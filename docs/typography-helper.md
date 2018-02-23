@@ -1,6 +1,7 @@
-Change the size and color of the text
+Change the size, weight and color of the text
 
 ### Sizes
+There are 7 sizes to choose from:
 
 ```jsx
 <>
@@ -11,6 +12,18 @@ Change the size and color of the text
   <p className='is-size-5'>Text Size</p>
   <p className='is-size-6'>Text Size</p>
   <p className='is-size-7'>Text Size</p>
+</>
+```
+
+### Text Weight
+You can transform the text weight with the use of one of 4 text weight helpers:
+
+```jsx
+<>
+  <p className='has-text-weight-light'>Light</p>
+  <p className='has-text-weight-normal'>Normal</p>
+  <p className='has-text-weight-semibold'>Semi Bold</p>
+  <p className='has-text-weight-bold'>Bold</p>
 </>
 ```
 
