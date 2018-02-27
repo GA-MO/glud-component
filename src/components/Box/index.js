@@ -4,12 +4,15 @@ import PropTypes from 'prop-types'
 
 export default class Box extends Component {
   static propTypes = {
+    onlyContain: PropTypes.bool,
     className: PropTypes.string
   }
 
   render () {
-    const { className } = this.props
-    const classes = classNames('box', className)
+    const { className, onlyContain } = this.props
+    const classes = classNames('box', {
+      'only-contain': onlyContain
+    }, className)
 
     return (
       <div className={classes}>

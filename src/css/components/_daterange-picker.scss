@@ -1,0 +1,43 @@
+.box-datarange-wrapper {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+
+  @include transition(0.3s);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  > .delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.DateRangePicker {
+  @include BREAKPOINT(640px) {
+    max-width: 315px;
+  }
+}
+
+.DateRangePicker__CalendarSelection {
+  background: $primary;
+  border: 1px solid $primary;
+}
+
+.DateRangePicker__CalendarSelection--is-pending {
+  background: rgba($primary, 0.5);
+  border: 1px solid rgba($primary, 0.5);
+}

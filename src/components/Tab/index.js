@@ -46,6 +46,7 @@ class Tab extends PureComponent {
             {React.Children.map(children, (child, index) => (
               <TabItem
                 title={child.props.title}
+                icon={child.props.icon}
                 active={tabActive === index + 1}
                 index={index}
                 onClick={this.onClickTab}
