@@ -9,11 +9,13 @@ class Tab extends PureComponent {
     defaultActive: PropTypes.number,
     centered: PropTypes.bool,
     right: PropTypes.bool,
-    fullwidth: PropTypes.bool
+    fullwidth: PropTypes.bool,
+    onClick: PropTypes.func
   }
 
   static defaultProps = {
-    defaultActive: 1
+    defaultActive: 1,
+    onClick: () => null
   }
 
   state = {
@@ -21,13 +23,16 @@ class Tab extends PureComponent {
   }
 
   componentDidMount = () => {
-    this.onClickTab(this.props.defaultActive)
+    this.setState({
+      tabActive: this.props.defaultActive
+    })
   }
 
   onClickTab = tab => {
     this.setState({
       tabActive: tab
     })
+    this.props.onClick(tab)
   }
 
   render () {
@@ -56,7 +61,7 @@ class Tab extends PureComponent {
         </div>
         {React.Children.map(children, (child, index) => {
           const isActive = tabActive === index + 1
-          if (isActive) {
+          if (isActive && child.props.children) {
             return (
               <TabContent>
                 {child.props.children}
