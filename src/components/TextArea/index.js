@@ -7,6 +7,7 @@ export default class TextArea extends PureComponent {
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     value: PropTypes.string,
+    maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
     isError: PropTypes.bool,
@@ -32,6 +33,7 @@ export default class TextArea extends PureComponent {
       onlyContain,
       label,
       value,
+      maxLength,
       isRequired,
       isSuccess,
       isError,
@@ -63,7 +65,8 @@ export default class TextArea extends PureComponent {
     const inputField = (
       <textarea
         className={classInput}
-        defaultValue={value}
+        value={value}
+        maxLength={maxLength}
         placeholder={placeholder}
         onChange={onChange}
         onFocus={onFocus}

@@ -9,6 +9,7 @@ export default class Input extends PureComponent {
     label: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string,
+    maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
     isError: PropTypes.bool,
@@ -38,6 +39,7 @@ export default class Input extends PureComponent {
       label,
       name,
       value,
+      maxLength,
       isRequired,
       isSuccess,
       isError,
@@ -75,6 +77,7 @@ export default class Input extends PureComponent {
         type={type}
         name={name}
         value={value}
+        maxLength={maxLength}
         placeholder={placeholder}
         onChange={onChange}
         onFocus={onFocus}
