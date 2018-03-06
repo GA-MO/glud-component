@@ -21,7 +21,7 @@ export default class InputDateRangePicker extends Component {
     message: PropTypes.string,
     disabled: PropTypes.bool,
     format: PropTypes.string,
-    value: customTyeps.momentRange,
+    value: PropTypes.oneOfType([customTyeps.momentRange, PropTypes.oneOf([null])]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
@@ -46,13 +46,13 @@ export default class InputDateRangePicker extends Component {
     })
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     this.setState({
       dateRangeValue: nextProps.value
     })
   }
 
-  handleInputFocus = (e) => {
+  handleInputFocus = e => {
     this.onShowDatePicker()
     this.props.onFocus(e)
   }
@@ -83,14 +83,29 @@ export default class InputDateRangePicker extends Component {
 
   render () {
     const { isShowCalendar, dateRangeValue } = this.state
-    const { onlyContain, label, name, isRequired, isSuccess, isError, message, format, disabled, minimumDate, maximumDate } = this.props
+    const {
+      onlyContain,
+      label,
+      name,
+      isRequired,
+      isSuccess,
+      isError,
+      message,
+      format,
+      disabled,
+      minimumDate,
+      maximumDate
+    } = this.props
 
     const classNameBoxDaterange = ClassNames('box-datarange-wrapper', {
       show: isShowCalendar
     })
 
-    const startDate = get(dateRangeValue, 'start', moment())
-    const endDate = get(dateRangeValue, 'end', moment())
+    const startDate = get(dateRangeValue, 'start', null)
+    const endDate = get(dateRangeValue, 'end', null)
+    const value = dateRangeValue
+      ? `${startDate.format(format)} - ${endDate.format(format)}`
+      : ''
 
     return (
       <div className='box-input-datarange-picker'>
@@ -104,7 +119,7 @@ export default class InputDateRangePicker extends Component {
           disabled={disabled}
           message={message}
           onFocus={this.handleInputFocus}
-          value={`${startDate.format(format)} - ${endDate.format(format)}`}
+          value={value}
           iconRight={() => <i className='fas fa-calendar' />}
         />
         <div className={classNameBoxDaterange}>

@@ -17,7 +17,7 @@ export default class InputDatePicker extends Component {
     message: PropTypes.string,
     disabled: PropTypes.bool,
     format: PropTypes.string,
-    value: customTyeps.moment,
+    value: PropTypes.oneOfType([customTyeps.moment, PropTypes.oneOf([null])]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
@@ -33,7 +33,7 @@ export default class InputDatePicker extends Component {
 
   state = {
     isShowCalendar: false,
-    dateValue: moment()
+    dateValue: null
   }
 
   componentDidMount = () => {
@@ -109,7 +109,7 @@ export default class InputDatePicker extends Component {
           disabled={disabled}
           message={message}
           onFocus={this.handleInputFocus}
-          value={dateValue.format(format)}
+          value={dateValue ? dateValue.format(format) : ''}
           iconRight={() => <i className='fas fa-calendar' />}
         />
         <div className={classNameBoxDaterange}>

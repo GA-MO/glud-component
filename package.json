@@ -16,6 +16,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "better-npm-run dev",
+    "deploy": "surge --project ./styleguide --domain glud-component.surge.sh",
     "build:lib": "better-npm-run clean:lib && babel src/components --out-dir lib",
     "build": "npm run clean && better-npm-run build",
     "build:client": "npm run clean && better-npm-run build:client",
@@ -25,6 +26,7 @@
     "test:watch": "better-npm-run test:watch",
     "lint": "eslint ./src",
     "prepublish": "npm run build:lib && npm run build && npm run styleguide:build",
+    "postpublish": "npm run deploy",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },

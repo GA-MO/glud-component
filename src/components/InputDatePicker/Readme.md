@@ -11,3 +11,6 @@ Example initial value
 ```jsx
   <InputDatePicker label='Select Date' />
 ```
+```jsx
+  <InputDatePicker label='Select Date' value={null} />
+```
