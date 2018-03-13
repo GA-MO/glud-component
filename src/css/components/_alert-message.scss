@@ -29,6 +29,7 @@
 }
 .SUCCESS{
   .box-alert-message{
+    color: #fff;
     background: #57BF57;
   }
 }
@@ -72,8 +73,7 @@
   padding: 20px;
   box-shadow: 0 0 64px rgba(0, 0, 0, 0.34);
   border-radius: 5px;
-  font-weight: bold;
-  color: #fff;
+  color: #363636;
 
   h1{
     margin: 0;
@@ -84,6 +84,6 @@
     right: 20px;
     top: 20px;
     z-index: 1;
-    color: #fff;
+    color: inherit;
   }
 }
