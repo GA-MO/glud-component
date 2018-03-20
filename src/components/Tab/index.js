@@ -10,12 +10,15 @@ class Tab extends PureComponent {
     centered: PropTypes.bool,
     right: PropTypes.bool,
     fullwidth: PropTypes.bool,
+    /**
+     * Return (tab, tabName)
+     */
     onClick: PropTypes.func
   }
 
   static defaultProps = {
     defaultActive: 1,
-    onClick: () => null
+    onClick: (tab, tabName) => null
   }
 
   state = {
