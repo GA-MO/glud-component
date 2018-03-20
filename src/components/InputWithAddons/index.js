@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import ItemAddon from './ItemAddon'
+import Item from './Item'
 
 class InputWithAddons extends Component {
   static propTypes = {
@@ -25,6 +25,6 @@ class InputWithAddons extends Component {
   }
 }
 
-InputWithAddons.Item = ItemAddon
+InputWithAddons.Item = Item
 
 export default InputWithAddons
