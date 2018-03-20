@@ -4,6 +4,7 @@ import classnames from 'classnames'
 
 export default class TabItem extends PureComponent {
   static propTypes = {
+    name: PropTypes.string,
     title: PropTypes.string,
     icon: PropTypes.string,
     active: PropTypes.bool,
@@ -11,16 +12,23 @@ export default class TabItem extends PureComponent {
     onClick: PropTypes.func
   }
 
-  render () {
-    const { title, icon, active, index, onClick } = this.props
+  render() {
+    const { name, title, icon, active, index, onClick } = this.props
     const classes = classnames('', {
       'is-active': active
     })
 
     return (
-      <li className={classes} onClick={() => onClick(index + 1)}>
+      <li
+        className={classes}
+        onClick={() => onClick({ tab: index + 1, name: name })}
+      >
         <a>
-          {icon && <span className='icon is-small'><i className={icon} /></span>}
+          {icon && (
+            <span className='icon is-small'>
+              <i className={icon} />
+            </span>
+          )}
           {title && <span>{title}</span>}
         </a>
       </li>

@@ -28,11 +28,11 @@ class Tab extends PureComponent {
     })
   }
 
-  onClickTab = tab => {
+  onClickTab = ({ tab, name }) => {
     this.setState({
       tabActive: tab
     })
-    this.props.onClick(tab)
+    this.props.onClick(tab, name)
   }
 
   render () {
@@ -50,6 +50,7 @@ class Tab extends PureComponent {
           <ul>
             {React.Children.map(children, (child, index) => (
               <TabItem
+                name={child.props.name}
                 title={child.props.title}
                 icon={child.props.icon}
                 active={tabActive === index + 1}
