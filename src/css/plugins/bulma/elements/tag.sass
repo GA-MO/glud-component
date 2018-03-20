@@ -82,6 +82,7 @@ $tag-delete-margin: 1px !default
     padding: 0
     position: relative
     width: 2em
+    cursor: pointer
     &:before,
     &:after
       background-color: currentColor
@@ -100,9 +101,11 @@ $tag-delete-margin: 1px !default
       width: 1px
     &:hover,
     &:focus
-      background-color: darken($tag-background-color, 5%)
+      opacity: 0.7
+      // background-color: darken($tag-background-color, 5%)
     &:active
-      background-color: darken($tag-background-color, 10%)
+      opacity: 0.9
+      // background-color: darken($tag-background-color, 10%)
   &.is-rounded
     border-radius: $radius-rounded
 

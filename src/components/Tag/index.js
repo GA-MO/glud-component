@@ -11,7 +11,10 @@ export default class Tag extends React.PureComponent {
     medium: PropTypes.bool,
     success: PropTypes.bool,
     light: PropTypes.bool,
-    info: PropTypes.bool
+    info: PropTypes.bool,
+    rounded: PropTypes.bool,
+    isDelete: PropTypes.bool,
+    onClick: PropTypes.func
   }
 
   render () {
@@ -24,6 +27,9 @@ export default class Tag extends React.PureComponent {
       success,
       light,
       info,
+      rounded,
+      isDelete,
+      onClick,
       children
     } = this.props
 
@@ -35,9 +41,11 @@ export default class Tag extends React.PureComponent {
       'is-info': info,
       'is-light': light,
       'is-success': success,
-      'is-warning': warning
+      'is-warning': warning,
+      'is-rounded': rounded,
+      'is-delete': isDelete
     })
 
-    return <span className={classes}>{children}</span>
+    return <span className={classes} onClick={onClick}>{children}</span>
   }
 }

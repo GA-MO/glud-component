@@ -22,3 +22,38 @@
     <Tag>Twenty</Tag>
   </TagGroup>
 ```
+
+### With Addons
+
+```jsx
+<TagGroup withAddon>
+  <TagWithAddons>
+    <Tag dark>Technology</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>CSS</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>Flexbox</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>Web Design</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>Open Source</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>Community</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+  <TagWithAddons>
+    <Tag dark>Documentation</Tag>
+    <Tag dark isDelete></Tag>
+  </TagWithAddons>
+</TagGroup>
+```

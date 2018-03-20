@@ -6,6 +6,7 @@ export default class Button extends React.PureComponent {
   static propTypes = {
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
+    isStatic: PropTypes.bool,
     fullwidth: PropTypes.bool,
     large: PropTypes.bool,
     medium: PropTypes.bool,
@@ -22,6 +23,7 @@ export default class Button extends React.PureComponent {
     const {
       primary,
       secondary,
+      isStatic,
       fullwidth,
       large,
       medium,
@@ -38,6 +40,7 @@ export default class Button extends React.PureComponent {
     const classes = classNames('button', {
       'is-primary': primary,
       'is-dark': secondary,
+      'is-static': isStatic,
       'is-large': large,
       'is-medium': medium,
       'is-outlined': outlined,
