@@ -32,7 +32,7 @@ export default class ListItem extends PureComponent {
       <div className={menuClass} onClick={this.handleClickMenu}>
         {icon && <div className='logo'><img src={icon} /></div>}
         <div className='box-text'>
-          <div className='title is-6'>{label}</div>
+          <div className='is-6'>{label}</div>
           <span className='is-size-7 has-text-grey'>{desc}</span>
         </div>
         {arrow && <i className='fas fa-chevron-right' />}
