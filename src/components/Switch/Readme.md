@@ -1,8 +1,6 @@
 ```jsx
-  <>
-    <Switch label='Switch' />
-    <Switch label='Switch' checked />
-  </>
+  <Switch label='Switch' />
+  <Switch label='Switch' checked />
 ```
 
 ### Use Only Contain

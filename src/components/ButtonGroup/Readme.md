@@ -17,29 +17,27 @@
 
 ### Positions
 ```jsx
-  <>
-    <ButtonGroup>
-      <Button>Button</Button>
-      <Button>Button</Button>
-      <Button>Button</Button>
-    </ButtonGroup>
+  <ButtonGroup>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+  </ButtonGroup>
 
-    <ButtonGroup centered>
-      <Button>Button</Button>
-      <Button>Button</Button>
-      <Button>Button</Button>
-    </ButtonGroup>
+  <ButtonGroup centered>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+  </ButtonGroup>
 
-    <ButtonGroup right>
-      <Button>Button</Button>
-      <Button>Button</Button>
-      <Button>Button</Button>
-    </ButtonGroup>
+  <ButtonGroup right>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+  </ButtonGroup>
 
-    <ButtonGroup fullwidth>
-      <Button>Button</Button>
-      <Button>Button</Button>
-      <Button>Button</Button>
-    </ButtonGroup>
-  </>
+  <ButtonGroup fullwidth>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+  </ButtonGroup>
 ```

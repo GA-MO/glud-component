@@ -1,8 +1,7 @@
 Recommended use [react-modal-es](https://www.npmjs.com/package/react-modal-es) with Custom UI
 ```jsx
-  initialState = { open: false }
-
-  ;<>
+  initialState = { open: false };
+  <>
     <Modal
       title='Modal'
       open={state.open}

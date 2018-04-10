@@ -1,41 +1,37 @@
 ```jsx
-  <>
-    <Select
-      label='Firstname'
-      placeholder='Text input'
-      message='This field invalid'
-    />
-    <Select
-      label='Lastname'
-      placeholder='Text input'
-      message='This field invalid'
-      isError
-    />
-    <Select
-      label='Email'
-      value='my@gmail.com'
-      placeholder='Text input'
-      message='This field valid'
-      isSuccess
-    />
-  </>
+  <Select
+    label='Firstname'
+    placeholder='Text input'
+    message='This field invalid'
+  />
+  <Select
+    label='Lastname'
+    placeholder='Text input'
+    message='This field invalid'
+    isError
+  />
+  <Select
+    label='Email'
+    value='my@gmail.com'
+    placeholder='Text input'
+    message='This field valid'
+    isSuccess
+  />
 ```
 
 ### States
 
 ```jsx
-  <>
-    <Select
-      label='Disabled'
-      placeholder='Text input disabled'
-      disabled
-    />
-    <Select
-      label='Loading'
-      placeholder='Text input loading'
-      loading
-    />
-  </>
+  <Select
+    label='Disabled'
+    placeholder='Text input disabled'
+    disabled
+  />
+  <Select
+    label='Loading'
+    placeholder='Text input loading'
+    loading
+  />
 ```
 
 ### Use Only Contain
