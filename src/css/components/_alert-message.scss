@@ -1,39 +1,52 @@
-.DEFAULT{
-  .box-alert-message{
-    background: #4D82D6;
+#box-react-alert-message {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.DEFAULT {
+  .box-alert-message {
+    background: #4d82d6;
   }
-  .box-alert-message .close{
+  .box-alert-message .close {
     color: #fff;
     opacity: 1;
   }
 }
-.ERROR{
-  .box-alert-message{
+
+.ERROR {
+  .box-alert-message {
     background: $primary;
     color: #fff;
   }
-  .box-alert-message .close{
+  .box-alert-message .close {
     color: #fff;
     opacity: 1;
   }
 }
-.WARNING{
-  .box-alert-message{
+
+.WARNING {
+  .box-alert-message {
     background: $yellow;
     color: #fff;
   }
-  .box-alert-message .close{
+  .box-alert-message .close {
     color: #fff;
     opacity: 1;
   }
 }
-.SUCCESS{
-  .box-alert-message{
+
+.SUCCESS {
+  .box-alert-message {
     color: #fff;
-    background: #57BF57;
+    background: #57bf57;
   }
 }
-.SYSTEM_ERROR{
+
+.SYSTEM_ERROR {
   position: fixed;
   z-index: 3;
   top: 0;
@@ -43,12 +56,14 @@
   margin: 0;
   width: 100%;
   background: $primary;
-  .D-2{
+
+  .D-2 {
     display: block;
     width: 100%;
     margin-bottom: 20px;
   }
-  .box-alert-message{
+
+  .box-alert-message {
     top: 45%;
     bottom: initial;
     border-radius: 0;
@@ -58,32 +73,62 @@
     box-shadow: none;
     background: $primary;
     color: #fff;
-    .close{display: none;}
+    .close {
+      display: none;
+    }
   }
 }
-.box-alert-message{
-  position: fixed;
-  width: 90%;
+
+.box-alert-message {
+  display: block;
+  margin: 0 auto;
   max-width: 700px;
-  z-index: 3;
-  left: 50%;
-  top: 20px;
-  transform: translateX(-50%);
   background: #fff;
   padding: 20px;
   box-shadow: 0 0 64px rgba(0, 0, 0, 0.34);
   border-radius: 5px;
   color: #363636;
 
-  h1{
+  @extend %alertMoveUpIn;
+
+  h1 {
     margin: 0;
   }
 
-  .close{
+  .close {
     position: absolute;
     right: 20px;
     top: 20px;
     z-index: 1;
     color: inherit;
+  }
+}
+
+.alert-fade-out {
+  @extend %fadeOut;
+}
+
+%alertMoveUpIn {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: alertMoveUpIn;
+  animation-play-state: running;
+}
+
+@keyframes alertMoveUpIn {
+  0% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 1;
   }
 }

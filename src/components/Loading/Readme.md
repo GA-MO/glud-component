@@ -13,12 +13,10 @@
     Loading.open({
       label: 'Loading please wait..'
     })
+
+    setTimeout(() => {
+      Loading.close()
+    }, 3000)
   }
-  handleClickCloseLoading = () => {
-    Loading.close()
-  }
-  <>
-    <Button onClick={this.handleClickOpenLoading} primary>Open Loading</Button>
-    <Button onClick={this.handleClickCloseLoading} secondary>Close Loading</Button>
-  </>
+  <Button onClick={this.handleClickOpenLoading} primary>Show Loading</Button>
 ```

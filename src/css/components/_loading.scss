@@ -1,4 +1,4 @@
-.box-loading{
+.box-loading {
   position: fixed;
   z-index: 5;
   width: 100%;
@@ -7,27 +7,72 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   visibility: hidden;
   opacity: 0;
-  @include transition(0.5s);
-  // display: none;
-  &.open{
+
+  // @extend %fadeIn;
+
+  &.open {
     visibility: visible;
     opacity: 1;
-    // display: block;
   }
-  .loading{
+  .loading {
     position: absolute;
     width: 250px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    // background: #fff;
+    transform: translate(-50%, -50%);
     text-align: center;
-    padding: 20px;
     border-radius: 10px;
+
     @extend .font-title;
-    // @extend .shadow-1;
+
+    &:before {
+      @include loader;
+      width: 40px;
+      height: 40px;
+      border-width: 3px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+.loading-fade-out {
+  // @extend %fadeOut;
+}
+
+%fadeIn {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+  animation-play-state: running;
+}
+
+%fadeOut {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeOut;
+  animation-play-state: running;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

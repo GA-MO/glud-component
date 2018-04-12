@@ -11,34 +11,47 @@ class Loading extends Component {
     const { label } = this.props
     return (
       <div className='box-loading open'>
-        <div className='loading'>
-          {label}
-        </div>
+        <div className='loading'>{label}</div>
       </div>
     )
   }
 }
 
 function createElemetReactLoading (properties) {
-  document.body.children[0].classList.add('react-loading')
   const divTarget = document.createElement('div')
   divTarget.id = 'box-react-loading'
   document.body.appendChild(divTarget)
+
   render(<Loading {...properties} />, divTarget)
 }
 
 function openLoading (properties) {
-  closeLoading()
-  createElemetReactLoading(properties)
+  closeLoading().then(() => {
+    createElemetReactLoading(properties)
+  })
 }
 
 function closeLoading () {
-  if (document.body.children[0].classList.contains('react-loading')) {
+  return new Promise((resolve) => {
     const target = document.getElementById('box-react-loading')
-    target.parentNode.removeChild(target)
-    const root = document.body.children[0]
-    root.classList.remove('react-loading')
-  }
+    if (!target) resolve()
+
+    target.classList.add('loading-fade-out')
+
+    const remove = () => {
+      // target.removeEventListener('webkitAnimationEnd', remove, false)
+      // target.removeEventListener('animationend', remove, false)
+      target.parentNode.removeChild(target)
+      const targetOther = document.getElementById('box-react-loading')
+      if (!targetOther) resolve()
+      closeLoading()
+    }
+
+    remove()
+
+    // target.addEventListener('webkitAnimationEnd', remove, false)
+    // target.addEventListener('onclick', remove, false)
+  })
 }
 
 export default {

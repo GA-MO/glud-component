@@ -16,7 +16,7 @@ class AlertMessage extends Component {
     }
   }
 
-  render() {
+  render () {
     const { type, message } = this.props
     return (
       <div className={type}>
@@ -28,35 +28,44 @@ class AlertMessage extends Component {
           >
             <i className='fa fa-times-circle' aria-hidden='true' />
           </a>
-          <div className='detail text-center'>
-            {message}
-          </div>
+          <div className='detail text-center'>{message}</div>
         </div>
       </div>
     )
   }
 }
 
-function createElemetReactAlert(properties) {
-  document.body.children[0].classList.add('react-alert-message')
+function createElemetReactAlert (properties) {
   const divTarget = document.createElement('div')
   divTarget.id = 'box-react-alert-message'
   document.body.appendChild(divTarget)
+
   render(<AlertMessage {...properties} />, divTarget)
 }
 
-function openAlertMessage(properties) {
-  closeAlertMessage()
-  createElemetReactAlert(properties)
+function openAlertMessage (properties) {
+  closeAlertMessage().then(() => {
+    createElemetReactAlert(properties)
+  })
 }
 
-function closeAlertMessage() {
-  if (document.body.children[0].classList.contains('react-alert-message')) {
+function closeAlertMessage () {
+  return new Promise((resolve) => {
     const target = document.getElementById('box-react-alert-message')
-    target.parentNode.removeChild(target)
-    const root = document.body.children[0]
-    root.classList.remove('react-alert-message')
-  }
+    if (!target) resolve()
+
+    target.classList.add('alert-fade-out')
+
+    const remove = () => {
+      target.removeEventListener('webkitAnimationEnd', remove, false)
+      target.removeEventListener('animationend', remove, false)
+      target.parentNode.removeChild(target)
+      resolve()
+    }
+
+    target.addEventListener('webkitAnimationEnd', remove, false)
+    target.addEventListener('onclick', remove, false)
+  })
 }
 
 export default {

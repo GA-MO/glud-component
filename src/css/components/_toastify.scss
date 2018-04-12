@@ -85,7 +85,6 @@
 .move-up-enter {
   animation-duration: 0.2s;
   animation-fill-mode: both;
-  animation-play-state: paused;
   animation-name: toastMoveUpIn;
   animation-play-state: running;
 }
@@ -93,7 +92,6 @@
 .move-up-leave {
   animation-duration: 0.2s;
   animation-fill-mode: both;
-  animation-play-state: paused;
   animation-name: toastMoveUpOut;
   animation-play-state: running;
   pointer-events: none;
