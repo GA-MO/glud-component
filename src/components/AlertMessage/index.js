@@ -59,11 +59,13 @@ function closeAlertMessage () {
     const remove = () => {
       target.removeEventListener('webkitAnimationEnd', remove, false)
       target.removeEventListener('animationend', remove, false)
+      target.addEventListener('onclick', remove, false)
       target.parentNode.removeChild(target)
       resolve()
     }
 
     target.addEventListener('webkitAnimationEnd', remove, false)
+    target.addEventListener('animationend', remove, false)
     target.addEventListener('onclick', remove, false)
   })
 }
