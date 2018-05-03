@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DateRangePicker from 'react-daterange-picker'
-import ClassNames from 'classnames'
 import Input from '../Input'
 import moment from 'moment'
 import customTyeps from './customTyeps-util'
@@ -97,10 +96,6 @@ export default class InputDatePicker extends Component {
       maximumDate
     } = this.props
 
-    const classNameBoxDaterange = ClassNames('box-datarange-wrapper', {
-      show: isShowCalendar
-    })
-
     return (
       <div className='box-input-datarange-picker'>
         <Input
@@ -117,18 +112,20 @@ export default class InputDatePicker extends Component {
           value={dateValue ? dateValue.format(format) : ''}
           iconRight={() => <i className='fas fa-calendar' />}
         />
-        <div className={classNameBoxDaterange}>
-          <a className='delete' onClick={this.handleClickCloseDatePicker} />
-          <DateRangePicker
-            numberOfCalendars={1}
-            selectionType='single'
-            initialFromValue
-            minimumDate={minimumDate}
-            maximumDate={maximumDate}
-            value={dateValue}
-            onSelect={this.handSelectDate}
-          />
-        </div>
+        {isShowCalendar && (
+          <div className='box-datarange-wrapper show'>
+            <a className='delete' onClick={this.handleClickCloseDatePicker} />
+            <DateRangePicker
+              numberOfCalendars={1}
+              selectionType='single'
+              initialFromValue
+              minimumDate={minimumDate}
+              maximumDate={maximumDate}
+              value={dateValue}
+              onSelect={this.handSelectDate}
+            />
+          </div>
+        )}
       </div>
     )
   }

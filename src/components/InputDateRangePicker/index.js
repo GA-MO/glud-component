@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DateRangePicker from 'react-daterange-picker'
 import get from 'lodash/get'
-import ClassNames from 'classnames'
 import Input from '../Input'
 import Moment from 'moment'
 import { extendMoment } from 'moment-range'
@@ -21,7 +20,10 @@ export default class InputDateRangePicker extends Component {
     message: PropTypes.string,
     disabled: PropTypes.bool,
     format: PropTypes.string,
-    value: PropTypes.oneOfType([customTyeps.momentRange, PropTypes.oneOf([null])]),
+    value: PropTypes.oneOfType([
+      customTyeps.momentRange,
+      PropTypes.oneOf([ null ])
+    ]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
@@ -47,22 +49,23 @@ export default class InputDateRangePicker extends Component {
     })
   }
 
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = (nextProps) => {
     this.setState({
       dateRangeValue: nextProps.value
     })
   }
 
-  handleInputFocus = e => {
+  handleInputFocus = (e) => {
     this.onShowDatePicker()
     this.props.onFocus(e)
+    this.input.blurInput()
   }
 
   handleClickCloseDatePicker = () => {
     this.onCloseDatePicker()
   }
 
-  handSelectDate = dateRangeValue => {
+  handSelectDate = (dateRangeValue) => {
     this.setState({
       dateRangeValue
     })
@@ -71,13 +74,13 @@ export default class InputDateRangePicker extends Component {
   }
 
   onShowDatePicker = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isShowCalendar: true
     }))
   }
 
   onCloseDatePicker = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isShowCalendar: false
     }))
   }
@@ -98,10 +101,6 @@ export default class InputDateRangePicker extends Component {
       maximumDate
     } = this.props
 
-    const classNameBoxDaterange = ClassNames('box-datarange-wrapper', {
-      show: isShowCalendar
-    })
-
     const startDate = get(dateRangeValue, 'start', null)
     const endDate = get(dateRangeValue, 'end', null)
     const value = dateRangeValue
@@ -111,6 +110,7 @@ export default class InputDateRangePicker extends Component {
     return (
       <div className='box-input-datarange-picker'>
         <Input
+          ref={(input) => (this.input = input)}
           onlyContain={onlyContain}
           label={label}
           name={name}
@@ -123,19 +123,21 @@ export default class InputDateRangePicker extends Component {
           value={value}
           iconRight={() => <i className='fas fa-calendar' />}
         />
-        <div className={classNameBoxDaterange}>
-          <a className='delete' onClick={this.handleClickCloseDatePicker} />
-          <DateRangePicker
-            numberOfCalendars={2}
-            selectionType='range'
-            singleDateRange
-            initialFromValue
-            minimumDate={minimumDate}
-            maximumDate={maximumDate}
-            value={dateRangeValue}
-            onSelect={this.handSelectDate}
-          />
-        </div>
+        {isShowCalendar && (
+          <div className='box-datarange-wrapper show'>
+            <a className='delete' onClick={this.handleClickCloseDatePicker} />
+            <DateRangePicker
+              numberOfCalendars={2}
+              selectionType='range'
+              singleDateRange
+              initialFromValue
+              minimumDate={minimumDate}
+              maximumDate={maximumDate}
+              value={dateRangeValue}
+              onSelect={this.handSelectDate}
+            />
+          </div>
+        )}
       </div>
     )
   }
