@@ -32,6 +32,10 @@ export default class Input extends PureComponent {
     type: 'text'
   }
 
+  blurInput = () => {
+    this.input.blur()
+  }
+
   render () {
     const {
       onlyContain,
@@ -73,6 +77,7 @@ export default class Input extends PureComponent {
 
     const inputField = (
       <input
+        ref={(input) => (this.input = input)}
         className={classInput}
         type={type}
         name={name}
@@ -92,20 +97,12 @@ export default class Input extends PureComponent {
 
     let iconL = null
     if (iconLeft) {
-      iconL = (
-        <span className='icon is-left'>
-          {iconLeft()}
-        </span>
-      )
+      iconL = <span className='icon is-left'>{iconLeft()}</span>
     }
 
     let iconR = null
     if (iconRight) {
-      iconR = (
-        <span className='icon is-right'>
-          {iconRight()}
-        </span>
-      )
+      iconR = <span className='icon is-right'>{iconRight()}</span>
     }
 
     if (onlyContain) {
