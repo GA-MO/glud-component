@@ -1,7 +1,7 @@
 ### Open
 ```js static
   Toastify({
-    position: 'center' // left, right, center is default
+    position: 'center', // left, right, center is default
     type: 'SUCCESS', // ERROR, WARNING, LOADING, INFO
     message: 'Message',
     closeTime: 3, // Seconds
