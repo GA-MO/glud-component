@@ -184,7 +184,7 @@ $button-static-border-color: $grey-lighter !default
     box-shadow: $button-disabled-shadow
     opacity: $button-disabled-opacity
   &.is-fullwidth
-    display: flex
+    display: block
     width: 100%
   &.is-loading
     color: transparent !important
@@ -245,4 +245,5 @@ $button-static-border-color: $grey-lighter !default
     justify-content: flex-end
   &.fullwidth
     .button
+      display: block
       flex-grow: 1
