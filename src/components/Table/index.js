@@ -89,7 +89,7 @@ export default class Table extends PureComponent {
     dataFromSearch: undefined
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps, prevState) {
     // this.handleCurrentPage(nextProps)
     this.setState({
       paginations: getPagination(
@@ -98,7 +98,7 @@ export default class Table extends PureComponent {
       ),
       currentPage: this.handleCurrentPage(nextProps)
         ? 1
-        : this.state.currentPage
+        : prevState.currentPage
     })
   }
 
@@ -122,9 +122,9 @@ export default class Table extends PureComponent {
   }
 
   onChangePage = page => {
-    this.setState({
+    this.setState(() => ({
       currentPage: page
-    })
+    }))
 
     if (this.props.onChangePage) {
       const currentView = this.state.paginations.filter(
