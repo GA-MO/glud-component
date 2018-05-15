@@ -34,7 +34,6 @@ export default class InputDateRangePicker extends Component {
     format: 'DD/MM/YYYY',
     onChange: () => null,
     onFocus: () => null,
-    minimumDate: Moment().subtract(2, 'month'),
     value: moment.range(moment().startOf('days'), moment().add(1, 'days'))
   }
 
