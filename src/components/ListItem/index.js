@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -22,7 +22,7 @@ export default class ListItem extends PureComponent {
   }
 
   render () {
-    const { label, desc, icon, arrow } = this.props
+    const { label, desc, icon, arrow, children } = this.props
 
     const menuClass = classNames('list-view-item', {
       'has-arrow': arrow
@@ -30,10 +30,19 @@ export default class ListItem extends PureComponent {
 
     return (
       <div className={menuClass} onClick={this.handleClickMenu}>
-        {icon && <div className='logo'><img src={icon} /></div>}
+        {icon && (
+          <div className='logo'>
+            <img src={icon} />
+          </div>
+        )}
         <div className='box-text'>
-          <div className='is-6'>{label}</div>
-          <span className='is-size-7 has-text-grey'>{desc}</span>
+          {children}
+          {!children && (
+            <Fragment>
+              <div className='is-6'>{label}</div>
+              <span className='is-size-7 has-text-grey'>{desc}</span>
+            </Fragment>
+          )}
         </div>
         {arrow && <i className='fas fa-chevron-right' />}
       </div>

@@ -1,3 +1,12 @@
 @media screen and (min-width: 769px) {
   .modal-content { margin: 0 20px !important; }
 }
+
+section.modal-card-body:last-child {
+  border-radius: 5px;
+}
+
+section.modal-card-body:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
