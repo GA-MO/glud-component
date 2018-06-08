@@ -32,9 +32,15 @@ export default class Input extends PureComponent {
     type: 'text'
   }
 
-  blurInput = () => {
+  blur = () => {
     this.input.blur()
   }
+
+  focus = () => {
+    this.input.focus()
+  }
+
+  getInput = () => this.input
 
   render () {
     const {

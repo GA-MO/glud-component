@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 // State
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     // todo: state.todo,
   }
@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 const actions = {
   // myActionName: Action.myActionName,
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
@@ -22,9 +22,9 @@ function mapDispatchToProps(dispatch) {
 export default class Home extends React.Component {
   static propTypes = {
     // name: PropTypes.string,
-  };
+  }
 
-  render() {
+  render () {
     return (
       <div className='_center'>
         <br />
