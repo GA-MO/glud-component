@@ -27,7 +27,7 @@ export const getPagination = (totalRecord, viewPerPage = 20) => {
 
 export const getDataByPage = (listData, pagination, currentPage) => {
   const currentView = pagination.filter(
-    item => Number(currentPage) === item.pageNumber
+    (item) => Number(currentPage) === item.pageNumber
   )[0]
   const result = []
   if (listData.length > 0) {
@@ -39,19 +39,6 @@ export const getDataByPage = (listData, pagination, currentPage) => {
   }
 
   return result
-}
-
-export const getDataToDisplay = (dataFromSmartSearch, datas) => {
-  if (dataFromSmartSearch) {
-    let dataSearch = []
-    for (const data1 of dataFromSmartSearch) {
-      for (const data2 of datas) {
-        if (data1.id === data2.id) dataSearch = dataSearch.concat([data2])
-      }
-    }
-    return dataSearch
-  }
-  return datas
 }
 
 const getTotalRecord = (totalDataLength, totalRecord) => {
@@ -89,26 +76,23 @@ export default class Table extends PureComponent {
     dataFromSearch: undefined
   }
 
-  componentWillReceiveProps (nextProps, prevState) {
-    // this.handleCurrentPage(nextProps)
-    this.setState({
+  componentWillReceiveProps (nextProps) {
+    this.setState((prevState) => ({
       paginations: getPagination(
         getTotalRecord(nextProps.dataList.length, nextProps.totalRecord),
         nextProps.viewPerPage
       ),
-      currentPage: this.handleCurrentPage(nextProps)
-        ? 1
-        : prevState.currentPage
-    })
+      currentPage: this.handleCurrentPage(nextProps) ? 1 : prevState.currentPage
+    }))
   }
 
-  handleCurrentPage = nextProps => {
+  handleCurrentPage = (nextProps) => {
     if (nextProps.onChangePage) return false
     if (nextProps.dataList.length !== this.props.dataList.length) return true
     return false
   }
 
-  search = dataFromSearch => {
+  search = (dataFromSearch) => {
     this.setState((prevState, props) => {
       let total = props.totalRecord || props.dataList.length
       if (dataFromSearch) total = dataFromSearch.length
@@ -121,14 +105,14 @@ export default class Table extends PureComponent {
     })
   }
 
-  onChangePage = page => {
+  onChangePage = (page) => {
     this.setState(() => ({
       currentPage: page
     }))
 
     if (this.props.onChangePage) {
       const currentView = this.state.paginations.filter(
-        item => Number(page) === item.pageNumber
+        (item) => Number(page) === item.pageNumber
       )[0]
       this.props.onChangePage(currentView)
     }
@@ -148,16 +132,17 @@ export default class Table extends PureComponent {
       placeholderSearch
     } = this.props
 
-    const datas = getDataToDisplay(dataFromSearch, dataList)
-    const tableRows = pagination && !onChangePage
-      ? getDataByPage(datas, paginations, currentPage)
-      : datas
+    const datas = dataFromSearch || dataList
+    const tableRows =
+      pagination && !onChangePage
+        ? getDataByPage(datas, paginations, currentPage)
+        : datas
 
     const ttr = dataFromSearch ? dataFromSearch.length : totalRecord
 
     return (
       <div>
-        {fieldsForSearch &&
+        {fieldsForSearch && (
           <Row>
             <Column D={6}>
               <SmartSearch
@@ -168,9 +153,10 @@ export default class Table extends PureComponent {
               />
               <br />
             </Column>
-          </Row>}
+          </Row>
+        )}
         {pagination &&
-          pagination === 'top' &&
+        pagination === 'top' && (
           <div>
             <PaginationGroup
               pagination={paginations}
@@ -179,23 +165,27 @@ export default class Table extends PureComponent {
               onChangePage={this.onChangePage}
             />
             <br />
-          </div>}
+          </div>
+        )}
         <div className='table-responsive'>
           <table className='table is-bordered is-striped is-hoverable is-fullwidth'>
             <thead>{elementHead()}</thead>
-            {elementBody
-              ? elementBody(tableRows)
-              : <tbody>{tableRows.map((data, i) => elementTD(data, i))}</tbody>}
+            {elementBody ? (
+              elementBody(tableRows)
+            ) : (
+              <tbody>{tableRows.map((data, i) => elementTD(data, i))}</tbody>
+            )}
           </table>
         </div>
         {pagination &&
-          pagination === 'bottom' &&
+        pagination === 'bottom' && (
           <PaginationGroup
             pagination={paginations}
             totalRecord={ttr}
             currentPage={currentPage}
             onChangePage={this.onChangePage}
-          />}
+          />
+        )}
       </div>
     )
   }
@@ -205,7 +195,7 @@ class PaginationGroup extends Component {
   static propTypes = {
     pagination: PropTypes.array,
     totalRecord: PropTypes.number,
-    currentPage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    currentPage: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
     onChangePage: PropTypes.func
   }
 
@@ -228,16 +218,14 @@ class PaginationGroup extends Component {
               inline
               onlyContain
               value={currentPage}
-              onChange={e => onChangePage(e.target.value)}
-              options={pagination.map(item => ({
+              onChange={(e) => onChangePage(e.target.value)}
+              options={pagination.map((item) => ({
                 label: item.pageNumber,
                 value: item.pageNumber
               }))}
             />
             <p className='control'>
-              <a className='button is-static'>
-                of {pagination.length} Pages
-              </a>
+              <a className='button is-static'>of {pagination.length} Pages</a>
             </p>
           </div>
         </Column>
