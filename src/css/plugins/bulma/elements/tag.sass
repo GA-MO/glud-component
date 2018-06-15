@@ -5,9 +5,13 @@ $tag-delete-margin: 1px !default
 
 .tags
   align-items: center
-  display: flex
+  display: inflex
   flex-wrap: wrap
   justify-content: flex-start
+  &.has-addons 
+    display: inline-flex
+    &:not(:last-child)
+      margin-right: 0.5rem
   .tag
     margin-bottom: 0.5rem
     &:not(:last-child)
