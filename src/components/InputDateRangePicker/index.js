@@ -57,7 +57,7 @@ export default class InputDateRangePicker extends Component {
   handleInputFocus = (e) => {
     this.onShowDatePicker()
     this.props.onFocus(e)
-    this.input.blurInput()
+    this.input.blur()
   }
 
   handleClickCloseDatePicker = () => {

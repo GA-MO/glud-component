@@ -53,7 +53,7 @@ export default class InputDatePicker extends Component {
   handleInputFocus = (e) => {
     this.onShowDatePicker()
     this.props.onFocus(e)
-    this.input.blurInput()
+    this.input.blur()
   }
 
   handleClickCloseDatePicker = () => {
