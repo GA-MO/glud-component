@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class Input extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     onlyContain: PropTypes.bool,
     type: PropTypes.string,
     label: PropTypes.string,
@@ -29,6 +30,7 @@ export default class Input extends PureComponent {
   }
 
   static defaultProps = {
+    testKey: 'input',
     type: 'text'
   }
 
@@ -44,6 +46,7 @@ export default class Input extends PureComponent {
 
   render () {
     const {
+      testKey,
       onlyContain,
       type,
       label,
@@ -83,6 +86,7 @@ export default class Input extends PureComponent {
 
     const inputField = (
       <input
+        data-test={testKey}
         ref={(input) => (this.input = input)}
         className={classInput}
         type={type}

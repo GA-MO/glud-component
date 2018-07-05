@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class Tag extends React.PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     danger: PropTypes.bool,
     dark: PropTypes.bool,
     warning: PropTypes.bool,
@@ -17,8 +18,13 @@ export default class Tag extends React.PureComponent {
     onClick: PropTypes.func
   }
 
+  static defaultProps = {
+    testKey: 'tag'
+  }
+
   render () {
     const {
+      testKey,
       danger,
       dark,
       warning,
@@ -46,6 +52,10 @@ export default class Tag extends React.PureComponent {
       'is-delete': isDelete
     })
 
-    return <span className={classes} onClick={onClick}>{children}</span>
+    return (
+      <span data-test={testKey} className={classes} onClick={onClick}>
+        {children}
+      </span>
+    )
   }
 }

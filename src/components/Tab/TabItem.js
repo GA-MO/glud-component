@@ -4,6 +4,7 @@ import classnames from 'classnames'
 
 export default class TabItem extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     name: PropTypes.string,
     title: PropTypes.string,
     icon: PropTypes.string,
@@ -12,14 +13,15 @@ export default class TabItem extends PureComponent {
     onClick: PropTypes.func
   }
 
-  render() {
-    const { name, title, icon, active, index, onClick } = this.props
+  render () {
+    const { testKey, name, title, icon, active, index, onClick } = this.props
     const classes = classnames('', {
       'is-active': active
     })
 
     return (
       <li
+        data-test={`${testKey || `tab-item-${index}`}`}
         className={classes}
         onClick={() => onClick({ tab: index + 1, name: name })}
       >

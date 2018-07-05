@@ -4,7 +4,9 @@ import classNames from 'classnames'
 
 export default class Checkbox extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     label: PropTypes.string,
+    name: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.shape(),
       PropTypes.string,
@@ -19,6 +21,7 @@ export default class Checkbox extends PureComponent {
   }
 
   static defaultProps = {
+    testKey: 'checkox',
     label: 'checkbox',
     value: {},
     checked: false,
@@ -31,13 +34,13 @@ export default class Checkbox extends PureComponent {
 
   handleCheckboxChange = () => {
     const { onChange, value } = this.props
-    this.setState(prevState => ({ isChecked: !prevState.isChecked }))
+    this.setState((prevState) => ({ isChecked: !prevState.isChecked }))
     onChange(!this.state.isChecked, value)
   }
 
   render () {
     const { isChecked } = this.state
-    const { label, value, disabled } = this.props
+    const { testKey, name, label, value, disabled } = this.props
     const classes = classNames('is-checkradio is-primary', {
       'has-background-color': isChecked
     })
@@ -45,6 +48,8 @@ export default class Checkbox extends PureComponent {
     return (
       <span>
         <input
+          data-test={testKey}
+          name={name}
           className={classes}
           type='checkbox'
           value={value}

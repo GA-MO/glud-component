@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class ListItem extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     label: PropTypes.string,
     desc: PropTypes.string,
     icon: PropTypes.string,
@@ -12,6 +13,7 @@ export default class ListItem extends PureComponent {
   }
 
   static defaultProps = {
+    testKey: 'item-list',
     arrow: false,
     onClick: () => null
   }
@@ -22,14 +24,18 @@ export default class ListItem extends PureComponent {
   }
 
   render () {
-    const { label, desc, icon, arrow, children } = this.props
+    const { testKey, label, desc, icon, arrow, children } = this.props
 
     const menuClass = classNames('list-view-item', {
       'has-arrow': arrow
     })
 
     return (
-      <div className={menuClass} onClick={this.handleClickMenu}>
+      <div
+        data-test={testKey}
+        className={menuClass}
+        onClick={this.handleClickMenu}
+      >
         {icon && (
           <div className='logo'>
             <img src={icon} />

@@ -8,7 +8,7 @@ export default class TagGroup extends Component {
     className: PropTypes.string
   }
 
-  render() {
+  render () {
     const { className, withAddon, children } = this.props
     const classes = classNames(
       '',

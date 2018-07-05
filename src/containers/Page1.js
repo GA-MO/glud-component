@@ -6,7 +6,7 @@ export default class Page1 extends Component {
     // fields: PropTypes.object.isRequired,
   }
 
-  render() {
+  render () {
     return (
       <div className='_center'>
         <br />

@@ -6,14 +6,19 @@ import ModalFooter from './ModalFooter'
 
 class Modal extends Component {
   static propTypes = {
+    testKey: PropTypes.string,
     title: PropTypes.string,
     open: PropTypes.bool,
     inline: PropTypes.bool,
     onClose: PropTypes.func
   }
 
+  static defaultProps = {
+    testKey: 'modal'
+  }
+
   render () {
-    const { title, open, inline, onClose, children } = this.props
+    const { testKey, title, open, inline, onClose, children } = this.props
     const modalClass = classNames('', {
       modal: !inline,
       'is-active': open
@@ -21,17 +26,26 @@ class Modal extends Component {
 
     return (
       <div className={modalClass}>
-        {!inline &&
+        {!inline && (
           <div
+            data-test={testKey}
             className='modal-background'
             onClick={() => onClose() || null}
-          />}
+          />
+        )}
         <div className='modal-card'>
-          {title &&
+          {title && (
             <header className='modal-card-head'>
               <p className='modal-card-title'>{title}</p>
-              {onClose && <button className='delete' onClick={onClose} />}
-            </header>}
+              {onClose && (
+                <button
+                  data-test={testKey}
+                  className='delete'
+                  onClick={onClose}
+                />
+              )}
+            </header>
+          )}
           {children}
         </div>
       </div>

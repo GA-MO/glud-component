@@ -1,6 +1,6 @@
-'use strict';
-(function() {
-  var _match = function(pattern, text, offset, options) {
+'use strict'
+;(function () {
+  var _match = function (pattern, text, offset, options) {
     var insertions = 0
     var matchIndexes = []
     var iPattern = 0
@@ -19,7 +19,7 @@
     }
     return null
   }
-  var _find = function(pattern, text, options) {
+  var _find = function (pattern, text, options) {
     var match = false
     var insertions = null
     var matchIndexes = null
@@ -51,11 +51,11 @@
     }
     return null
   }
-  var _score = function(entryResults) {
+  var _score = function (entryResults) {
     var patternsMinInsertions = {}
     var patternsMinMatchIndex = {}
-    entryResults.forEach(function(fieldResults) {
-      fieldResults.patterns.forEach(function(pattern) {
+    entryResults.forEach(function (fieldResults) {
+      fieldResults.patterns.forEach(function (pattern) {
         if (
           patternsMinInsertions[pattern.value] === undefined ||
           pattern.insertions < patternsMinInsertions[pattern.value]
@@ -75,7 +75,7 @@
     }
     return minInsertions + minMatchIndex.sort()[0] / 1000
   }
-  var _getFieldString = function(entry, field) {
+  var _getFieldString = function (entry, field) {
     var path = field
     var current = entry
     for (var i = 0; i < path.length; i++) {
@@ -90,9 +90,9 @@
     }
     return current
   }
-  var _forEachObject = function(object, fn) {
-    var _locals = [];
-    (function _private(object) {
+  var _forEachObject = function (object, fn) {
+    var _locals = []
+    ;(function _private (object) {
       for (var key in object) {
         _locals.push(key)
         if (typeof object[key] === 'object') {
@@ -104,20 +104,20 @@
       }
     })(object)
   }
-  var _search = function(entries, patterns, fields, options) {
+  var _search = function (entries, patterns, fields, options) {
     var results = []
-    entries.forEach(function(entry) {
+    entries.forEach(function (entry) {
       var match = false
       var entryMatch = []
       var entryResults = []
-      _forEachObject(fields, function(field) {
+      _forEachObject(fields, function (field) {
         var fieldString = _getFieldString(entry, field)
         if (fieldString === null) {
           return
         }
         var fieldMatch = []
         var fieldResults = { field: field.join('.'), patterns: [] }
-        patterns.forEach(function(pattern) {
+        patterns.forEach(function (pattern) {
           var res = _find(pattern, fieldString, options)
           if (res) {
             fieldResults.patterns.push(res)
@@ -131,7 +131,8 @@
           entryResults.push(fieldResults)
           match = true
         } else if (
-          options.fieldMatching === false && fieldResults.patterns.length > 0
+          options.fieldMatching === false &&
+          fieldResults.patterns.length > 0
         ) {
           entryResults.push(fieldResults)
         }
@@ -150,7 +151,7 @@
     })
     return results
   }
-  var _buildOptions = function(options) {
+  var _buildOptions = function (options) {
     var defaultOptions = {
       caseSensitive: false,
       fieldMatching: false,
@@ -166,15 +167,17 @@
     }
     return defaultOptions
   }
-  var sanitizeArray = function(array, caseSensitive) {
+  var sanitizeArray = function (array, caseSensitive) {
     if (
-      array === undefined || array.length === undefined || array.length === 0
+      array === undefined ||
+      array.length === undefined ||
+      array.length === 0
     ) {
       return []
     }
     var values = {}
     var newArray = []
-    array.forEach(function(elem) {
+    array.forEach(function (elem) {
       if (typeof elem !== 'string') {
         return
       }
@@ -186,7 +189,7 @@
     })
     return newArray
   }
-  function smartSearch(entries, patterns, fields, options) {
+  function smartSearch (entries, patterns, fields, options) {
     options = _buildOptions(options)
     patterns = sanitizeArray([].concat(patterns), options.caseSensitive)
     fields = typeof fields === 'string' ? { [fields]: true } : fields
@@ -194,7 +197,7 @@
       return
     }
     var results = _search(entries, patterns, fields, options)
-    results.sort(function(a, b) {
+    results.sort(function (a, b) {
       return a.score - b.score
     })
     return results

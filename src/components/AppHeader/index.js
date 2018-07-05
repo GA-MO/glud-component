@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 export default class AppHeader extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     rightDisable: PropTypes.bool,
     leftDisable: PropTypes.bool,
     rightIcon: PropTypes.string,
@@ -15,7 +16,8 @@ export default class AppHeader extends PureComponent {
 
   static defaultProps = {
     onClickLeft: () => console.log('Top Navigation Left action cliked'),
-    onClickRight: () => console.log('Top Navigation right action cliked')
+    onClickRight: () => console.log('Top Navigation right action cliked'),
+    testKey: 'app-header'
   }
 
   render () {
@@ -27,18 +29,28 @@ export default class AppHeader extends PureComponent {
       onClickLeft,
       onClickRight,
       leftIcon,
-      rightIcon
+      rightIcon,
+      testKey
     } = this.props
 
     return (
       <header className='app-header'>
-        <div className='nav-left' onClick={onClickLeft}>
+        <div
+          className='nav-left'
+          data-test={`${testKey}-nav-left`}
+          onClick={onClickLeft}
+        >
           {!leftDisable && <i className={leftIcon} />}
         </div>
         <div className='nav-title'>
-          <div className='app-title'>{title}</div><span>{subTitle}</span>
+          <div className='app-title'>{title}</div>
+          <span>{subTitle}</span>
         </div>
-        <div className='nav-right' onClick={onClickRight}>
+        <div
+          className='nav-right'
+          data-test={`${testKey}-nav-right`}
+          onClick={onClickRight}
+        >
           {!rightDisable && <i className={rightIcon} />}
         </div>
       </header>

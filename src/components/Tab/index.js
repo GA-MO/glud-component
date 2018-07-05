@@ -53,6 +53,7 @@ class Tab extends PureComponent {
           <ul>
             {React.Children.map(children, (child, index) => (
               <TabItem
+                testKey={child.props.testKey}
                 name={child.props.name}
                 title={child.props.title}
                 icon={child.props.icon}
@@ -66,11 +67,7 @@ class Tab extends PureComponent {
         {React.Children.map(children, (child, index) => {
           const isActive = tabActive === index + 1
           if (isActive && child.props.children) {
-            return (
-              <TabContent>
-                {child.props.children}
-              </TabContent>
-            )
+            return <TabContent>{child.props.children}</TabContent>
           }
           return null
         })}

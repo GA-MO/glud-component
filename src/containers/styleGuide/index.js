@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 // import * as Action from '../actions/action'
 
 // State
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     // myState: state.myState,
   }
@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 const actions = {
   // myActionName: Action.myActionName,
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
@@ -22,9 +22,9 @@ function mapDispatchToProps(dispatch) {
 export default class StyleGuide extends React.Component {
   static propTypes = {
     // name: React.PropTypes.string,
-  };
+  }
 
-  render() {
+  render () {
     return (
       <div className='body-style-guide'>
         <div className='container'>
@@ -72,24 +72,10 @@ export default class StyleGuide extends React.Component {
           <div className='section-style'>
             <h1>Text Label</h1>
             <p>
-              Add Class
-              {' '}
-              <code>.black</code>
-              ,
-              {' '}
-              <code>.gray</code>
-              ,
-              {' '}
-              <code>.red</code>
-              ,
-              {' '}
-              <code>.green</code>
-              {' '}
-              or
-              {' '}
-              <code>.blue</code>
-              {' '}
-              for button color.
+              Add Class <code>.black</code>
+              , <code>.gray</code>
+              , <code>.red</code>
+              , <code>.green</code> or <code>.blue</code> for button color.
             </p>
             <span className='text-label black'>Label</span>
             <span className='text-label'>Label</span>
@@ -99,17 +85,16 @@ export default class StyleGuide extends React.Component {
             <br />
             <br />
             <p>
-              Lorem ipsum dolor sit amet,
-              {' '}
-              <span className='text-label red'>consectetur</span>
-              {' '}
-              adipisicing elit. Sunt iusto assumenda voluptatibus perferendis obcaecati blanditiis recusandae doloremque dolorem excepturi, dolorum officia repellendus dolor eum fugit nulla. Ea alias quaerat, minus!
+              Lorem ipsum dolor sit amet,{' '}
+              <span className='text-label red'>consectetur</span> adipisicing
+              elit. Sunt iusto assumenda voluptatibus perferendis obcaecati
+              blanditiis recusandae doloremque dolorem excepturi, dolorum
+              officia repellendus dolor eum fugit nulla. Ea alias quaerat,
+              minus!
             </p>
             <br />
             <pre>
-              <code>
-                {`<span className='text-label'>Label</span>`}
-              </code>
+              <code>{`<span className='text-label'>Label</span>`}</code>
             </pre>
           </div>
           <br />
@@ -121,24 +106,12 @@ export default class StyleGuide extends React.Component {
           <div className='section-style'>
             <h1>Box Message</h1>
             <p>
-              Add Class
-              {' '}
-              <code>.loading</code>
-              ,
-              {' '}
-              <code>.warning</code>
-              ,
-              {' '}
-              <code>.error</code>
-              , and
-              {' '}
-              <code>.success</code>
-              {' '}
-              for box color.
+              Add Class <code>.loading</code>
+              , <code>.warning</code>
+              , <code>.error</code>
+              , and <code>.success</code> for box color.
             </p>
-            <div className='box-message-info'>
-              Helow welcom to my site.
-            </div>
+            <div className='box-message-info'>Helow welcom to my site.</div>
             <div className='box-message-info loading'>
               Helow welcom to my site.
             </div>
@@ -153,9 +126,7 @@ export default class StyleGuide extends React.Component {
             </div>
             <br />
             <pre>
-              <code>
-                {`<span className='text-label'>Label</span>`}
-              </code>
+              <code>{`<span className='text-label'>Label</span>`}</code>
             </pre>
           </div>
           <br />
@@ -169,46 +140,50 @@ export default class StyleGuide extends React.Component {
             <br />
             <h4>Button default</h4>
             <p>
-              Add Class
-              {' '}
-              <code>.black</code>
-              ,
-              {' '}
-              <code>.gray</code>
-              ,
-              {' '}
-              <code>.red</code>
-              ,
-              {' '}
-              <code>.green</code>
-              {' '}
-              or
-              {' '}
-              <code>.blue</code>
-              {' '}
-              for button color.
+              Add Class <code>.black</code>
+              , <code>.gray</code>
+              , <code>.red</code>
+              , <code>.green</code> or <code>.blue</code> for button color.
             </p>
             <button className='button'>Button</button>
-            <a href='#' className='button black'>Button</a>
-            <a href='#' className='button gray'>Button</a>
-            <a href='#' className='button red'>Button</a>
-            <a href='#' className='button green'>Button</a>
-            <a href='#' className='button blue'>Button</a>
+            <a href='#' className='button black'>
+              Button
+            </a>
+            <a href='#' className='button gray'>
+              Button
+            </a>
+            <a href='#' className='button red'>
+              Button
+            </a>
+            <a href='#' className='button green'>
+              Button
+            </a>
+            <a href='#' className='button blue'>
+              Button
+            </a>
             <br />
             <br />
             <pre>
-              <code>
-                {`<button className='button'>Button</button>`}
-              </code>
+              <code>{`<button className='button'>Button</button>`}</code>
             </pre>
             <br />
             <h4>Button with border</h4>
             <button className='button-outline'>Button</button>
-            <a href='#' className='button-outline black'>Button</a>
-            <a href='#' className='button-outline gray'>Button</a>
-            <a href='#' className='button-outline red'>Button</a>
-            <a href='#' className='button-outline green'>Button</a>
-            <a href='#' className='button-outline blue'>Button</a>
+            <a href='#' className='button-outline black'>
+              Button
+            </a>
+            <a href='#' className='button-outline gray'>
+              Button
+            </a>
+            <a href='#' className='button-outline red'>
+              Button
+            </a>
+            <a href='#' className='button-outline green'>
+              Button
+            </a>
+            <a href='#' className='button-outline blue'>
+              Button
+            </a>
             <br />
             <br />
             <pre>
@@ -219,38 +194,32 @@ export default class StyleGuide extends React.Component {
             <br />
             <h4>Size</h4>
             <p>
-              Add Class
-              {' '}
-              <code>.large</code>
-              ,
-              {' '}
-              <code>.small</code>
-              {' '}
-              or
-              {' '}
-              <code>.xsmall</code>
-              {' '}
-              for additional sizes.
+              Add Class <code>.large</code>
+              , <code>.small</code> or <code>.xsmall</code> for additional
+              sizes.
             </p>
-            <p><button className='button red large'>Large</button></p>
-            <p><button className='button red'>Default</button></p>
-            <p><button className='button red small'>Small</button></p>
-            <p><button className='button red xsmall'>Extra Small</button></p>
+            <p>
+              <button className='button red large'>Large</button>
+            </p>
+            <p>
+              <button className='button red'>Default</button>
+            </p>
+            <p>
+              <button className='button red small'>Small</button>
+            </p>
+            <p>
+              <button className='button red xsmall'>Extra Small</button>
+            </p>
             <br />
             <br />
             <h4>Disabled state</h4>
             <p>
-              Add the
-              {' '}
-              <code>disabled</code>
-              {' '}
-              attribute and class
-              {' '}
-              <code>.disabled</code>
-              {' '}
-              to buttons.
+              Add the <code>disabled</code> attribute and class{' '}
+              <code>.disabled</code> to buttons.
             </p>
-            <button className='button red disabled' disabled>Button</button>
+            <button className='button red disabled' disabled>
+              Button
+            </button>
             <button className='button-outline red disabled' disabled>
               Button
             </button>
@@ -265,9 +234,18 @@ export default class StyleGuide extends React.Component {
             <h4>Button inline</h4>
             <div className='button-inline'>
               <button className='button red'> Button </button>
-              <a href='#' className='button green'> Button </a>
-              <a href='#' className='button blue'> Button </a>
-              <a href='#' className='button gray'> Button </a>
+              <a href='#' className='button green'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button blue'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button gray'>
+                {' '}
+                Button{' '}
+              </a>
             </div>
             <br />
             <pre>
@@ -289,8 +267,7 @@ export default class StyleGuide extends React.Component {
             }
             <h4>Button with icon</h4>
             <p>
-              Get more icons
-              {' '}
+              Get more icons{' '}
               <a
                 href='http://fontawesome.io/icons/'
                 className='link'
@@ -317,15 +294,33 @@ export default class StyleGuide extends React.Component {
             }
             <h4>Button inline group</h4>
             <div className='button-group'>
-              <a href='#' className='button red active'> Button </a>
-              <a href='#' className='button red'> Button </a>
-              <a href='#' className='button red'> Button </a>
+              <a href='#' className='button red active'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button red'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button red'>
+                {' '}
+                Button{' '}
+              </a>
             </div>
             <br />
             <div className='button-group'>
-              <a href='#' className='button-outline red active'> Button </a>
-              <a href='#' className='button-outline red'> Button </a>
-              <a href='#' className='button-outline red'> Button </a>
+              <a href='#' className='button-outline red active'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button-outline red'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button-outline red'>
+                {' '}
+                Button{' '}
+              </a>
             </div>
             <br />
             <pre>
@@ -343,9 +338,18 @@ export default class StyleGuide extends React.Component {
             <br />
             <h4>Button inline group Vertical</h4>
             <div className='button-group vertical'>
-              <a href='#' className='button-outline red active'> Button </a>
-              <a href='#' className='button-outline red'> Button </a>
-              <a href='#' className='button-outline red'> Button </a>
+              <a href='#' className='button-outline red active'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button-outline red'>
+                {' '}
+                Button{' '}
+              </a>
+              <a href='#' className='button-outline red'>
+                {' '}
+                Button{' '}
+              </a>
             </div>
             <br />
             <pre>
@@ -422,21 +426,9 @@ export default class StyleGuide extends React.Component {
             }
             <b>Form validation</b>
             <p>
-              Add Class
-              {' '}
-              <code>.loading</code>
-              ,
-              {' '}
-              <code>.warning</code>
-              ,
-              {' '}
-              <code>.error</code>
-              {' '}
-              or
-              {' '}
-              <code>.success</code>
-              {' '}
-              for input status.
+              Add Class <code>.loading</code>
+              , <code>.warning</code>
+              , <code>.error</code> or <code>.success</code> for input status.
             </p>
             <br />
             <div className='row'>

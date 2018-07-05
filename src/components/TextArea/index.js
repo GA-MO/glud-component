@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class TextArea extends PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     value: PropTypes.string,
@@ -25,11 +26,13 @@ export default class TextArea extends PureComponent {
   }
 
   static defaultProps = {
+    testKey: 'textarea',
     rows: 4
   }
 
   render () {
     const {
+      testKey,
       onlyContain,
       label,
       value,
@@ -64,6 +67,7 @@ export default class TextArea extends PureComponent {
 
     const inputField = (
       <textarea
+        data-test={testKey}
         className={classInput}
         value={value}
         maxLength={maxLength}
@@ -81,19 +85,15 @@ export default class TextArea extends PureComponent {
     )
 
     if (onlyContain) {
-      return (
-        <div className={classControl}>
-          {inputField}
-        </div>
-      )
+      return <div className={classControl}>{inputField}</div>
     }
 
     return (
       <div className='field'>
-        <label className='label'>{label} {isRequired && <i className='required fas fa-asterisk' />}</label>
-        <div className={classControl}>
-          {inputField}
-        </div>
+        <label className='label'>
+          {label} {isRequired && <i className='required fas fa-asterisk' />}
+        </label>
+        <div className={classControl}>{inputField}</div>
         {message && <p className={classHelp}>{message}</p>}
       </div>
     )

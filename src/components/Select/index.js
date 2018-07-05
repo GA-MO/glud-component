@@ -4,10 +4,11 @@ import classNames from 'classnames'
 
 export default class Select extends Component {
   static propTypes = {
+    testKey: PropTypes.string,
     onlyContain: PropTypes.bool,
     inline: PropTypes.bool,
     label: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
     isError: PropTypes.bool,
@@ -22,6 +23,7 @@ export default class Select extends Component {
   }
 
   static defaultProps = {
+    testKey: 'select',
     options: [
       {
         label: 'Select dropdown',
@@ -36,6 +38,7 @@ export default class Select extends Component {
 
   render () {
     const {
+      testKey,
       onlyContain,
       inline,
       label,
@@ -60,7 +63,7 @@ export default class Select extends Component {
     }
 
     const classSelect = classNames('select', status, {
-      'inline': inline
+      inline: inline
     })
     const classHelp = classNames('help', status)
     const classControl = classNames('control', {
@@ -71,6 +74,7 @@ export default class Select extends Component {
     const inputField = (
       <div className={classSelect}>
         <select
+          data-test={testKey}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
@@ -78,7 +82,9 @@ export default class Select extends Component {
           disabled={disabled}
         >
           {options.map((option, i) => (
-            <option key={i} value={option.value}>{option.label}</option>
+            <option key={i} value={option.value}>
+              {option.label}
+            </option>
           ))}
         </select>
       </div>
@@ -86,11 +92,7 @@ export default class Select extends Component {
 
     let iconL = null
     if (iconLeft) {
-      iconL = (
-        <span className='icon is-left'>
-          {iconLeft()}
-        </span>
-      )
+      iconL = <span className='icon is-left'>{iconLeft()}</span>
     }
 
     if (onlyContain) {
@@ -104,7 +106,9 @@ export default class Select extends Component {
 
     return (
       <div className='field'>
-        <label className='label'>{label} {isRequired && <i className='required fas fa-asterisk' />}</label>
+        <label className='label'>
+          {label} {isRequired && <i className='required fas fa-asterisk' />}
+        </label>
         <div className={classControl}>
           {inputField}
           {iconL}

@@ -10,7 +10,8 @@ export default class RadioButton extends PureComponent {
     labelGroup: PropTypes.string,
     isRequired: PropTypes.bool,
     options: PropTypes.array.isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
+      .isRequired,
     onChange: PropTypes.func
   }
 
@@ -18,7 +19,7 @@ export default class RadioButton extends PureComponent {
     inline: false,
     options: [],
     value: [],
-    onChange: value => null
+    onChange: (value) => null
   }
 
   state = {
@@ -31,29 +32,30 @@ export default class RadioButton extends PureComponent {
     }))
   }
 
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = (nextProps) => {
     this.setState(() => ({
       value: nextProps.value
     }))
   }
 
-  isChecked = optionValue => {
+  isChecked = (optionValue) => {
     const sValue = this.state.value
     const value = this.props.value
     const currentValue = sValue !== '' ? sValue : value
     return currentValue === optionValue
   }
 
-  handleButtonClick = value => {
+  handleButtonClick = (value) => {
     this.setState({
       value
     })
     this.props.onChange(value)
   }
 
-  renderRadio = option => (
+  renderRadio = (option) => (
     <Button
       key={option.value}
+      data-test={option.testKey}
       primary={this.isChecked(option.value)}
       disabled={option.disabled}
       onClick={() => this.handleButtonClick(option.value)}
@@ -64,28 +66,24 @@ export default class RadioButton extends PureComponent {
 
   renderRadioOptions = () => {
     const { options } = this.props
-    return options.map(option => this.renderRadio(option))
+    return options.map((option) => this.renderRadio(option))
   }
 
   render () {
     const { onlyContain, labelGroup, isRequired, fullwidth } = this.props
 
     if (onlyContain) {
-      return (
-        <ButtonGroup hasAddons>
-          {this.renderRadioOptions()}
-        </ButtonGroup>
-      )
+      return <ButtonGroup hasAddons>{this.renderRadioOptions()}</ButtonGroup>
     }
 
     return (
       <div className='field'>
-        {labelGroup &&
+        {labelGroup && (
           <label className='label'>
-            {labelGroup}
-            {' '}
+            {labelGroup}{' '}
             {isRequired && <i className='required fas fa-asterisk' />}
-          </label>}
+          </label>
+        )}
         <ButtonGroup hasAddons fullwidth={fullwidth}>
           {this.renderRadioOptions()}
         </ButtonGroup>

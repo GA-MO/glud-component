@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class Button extends React.PureComponent {
   static propTypes = {
+    testKey: PropTypes.string,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
     isStatic: PropTypes.bool,
@@ -19,8 +20,13 @@ export default class Button extends React.PureComponent {
     onClick: PropTypes.func
   }
 
+  static defaultProps = {
+    testKey: 'button'
+  }
+
   render () {
     const {
+      testKey,
       primary,
       secondary,
       isStatic,
@@ -51,7 +57,12 @@ export default class Button extends React.PureComponent {
     })
 
     return (
-      <button className={classes} disabled={disabled} onClick={onClick}>
+      <button
+        data-test={testKey}
+        className={classes}
+        disabled={disabled}
+        onClick={onClick}
+      >
         {icon ? <Icon icon={icon} /> : null}
         {icon && children ? <span>{children}</span> : children}
       </button>

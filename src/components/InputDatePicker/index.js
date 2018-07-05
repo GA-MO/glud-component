@@ -7,6 +7,7 @@ import customTyeps from './customTyeps-util'
 
 export default class InputDatePicker extends Component {
   static propTypes = {
+    testKey: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -27,6 +28,7 @@ export default class InputDatePicker extends Component {
   }
 
   static defaultProps = {
+    testKey: 'input-date-picker',
     format: 'DD/MM/YYYY',
     onChange: () => null,
     onFocus: () => null,
@@ -83,6 +85,7 @@ export default class InputDatePicker extends Component {
   render () {
     const { isShowCalendar, dateValue } = this.state
     const {
+      testKey,
       onlyContain,
       label,
       name,
@@ -99,6 +102,7 @@ export default class InputDatePicker extends Component {
     return (
       <div className='box-input-datarange-picker'>
         <Input
+          data-test={testKey}
           ref={(input) => (this.input = input)}
           onlyContain={onlyContain}
           label={label}
