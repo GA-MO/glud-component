@@ -36,7 +36,8 @@ export default class Column extends Component {
     orderXSM: PropTypes.number,
     top: PropTypes.bool,
     middle: PropTypes.bool,
-    bottom: PropTypes.bool
+    bottom: PropTypes.bool,
+    className: PropTypes.string
   }
 
   render () {
@@ -56,10 +57,12 @@ export default class Column extends Component {
       top,
       middle,
       bottom,
+      className,
       children
     } = this.props
 
     const classes = classNames('', {
+      [className]: className,
       [`D-${D}`]: D,
       [`L-${L}`]: L,
       [`T-${T}`]: T,

@@ -6,7 +6,9 @@ export default class Row extends Component {
   static propTypes = {
     centered: PropTypes.bool,
     right: PropTypes.bool,
-    justified: PropTypes.bool
+    justified: PropTypes.bool,
+    noGutter: PropTypes.bool,
+    className: PropTypes.string
   }
 
   render () {
@@ -14,10 +16,14 @@ export default class Row extends Component {
       centered,
       right,
       justified,
+      noGutter,
+      className,
       children
     } = this.props
 
     const classes = classNames('row', {
+      [className]: className,
+      'no-gutter': noGutter,
       'columns-center': centered,
       'columns-right': right,
       'columns-between': justified
