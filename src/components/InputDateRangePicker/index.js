@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import DateRangePicker from 'react-daterange-picker'
 import get from 'lodash/get'
@@ -110,7 +110,7 @@ export default class InputDateRangePicker extends Component {
       : ''
 
     return (
-      <div className='box-input-datarange-picker'>
+      <Fragment>
         <Input
           data-test={testKey}
           ref={(input) => (this.input = input)}
@@ -141,7 +141,7 @@ export default class InputDateRangePicker extends Component {
             />
           </div>
         )}
-      </div>
+      </Fragment>
     )
   }
 }

@@ -7,6 +7,7 @@ export default class Select extends Component {
     testKey: PropTypes.string,
     onlyContain: PropTypes.bool,
     inline: PropTypes.bool,
+    name: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
     isRequired: PropTypes.bool,
@@ -41,6 +42,7 @@ export default class Select extends Component {
       testKey,
       onlyContain,
       inline,
+      name,
       label,
       value,
       isRequired,
@@ -74,6 +76,7 @@ export default class Select extends Component {
     const inputField = (
       <div className={classSelect}>
         <select
+          name={name}
           data-test={testKey}
           onChange={onChange}
           onFocus={onFocus}

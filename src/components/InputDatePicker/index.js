@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import DateRangePicker from 'react-daterange-picker'
 import Input from '../Input'
@@ -100,7 +100,7 @@ export default class InputDatePicker extends Component {
     } = this.props
 
     return (
-      <div className='box-input-datarange-picker'>
+      <Fragment>
         <Input
           data-test={testKey}
           ref={(input) => (this.input = input)}
@@ -130,7 +130,7 @@ export default class InputDatePicker extends Component {
             />
           </div>
         )}
-      </div>
+      </Fragment>
     )
   }
 }
