@@ -87,7 +87,7 @@ export default class Table extends PureComponent {
   }
 
   handleCurrentPage = (nextProps) => {
-    if (nextProps.onChangePage) return false
+    if (nextProps.onChangePage && nextProps.dataList.length > 0) return false
     if (nextProps.dataList.length !== this.props.dataList.length) return true
     return false
   }
