@@ -34,6 +34,17 @@
   <Button primary disabled>Disabled</Button>
 ```
 
+### With Tooltip
+
+```jsx
+  <Button tooltip='This is Tooltip'>Top Tooltip</Button>
+  <Button tooltip='This is Tooltip left' tooltipLeft>Left Tooltip</Button>
+  <Button tooltip='This is Tooltip Right' tooltipRight>Top Tooltip</Button>
+  <Button tooltip='This is Tooltip Bottom' tooltipBottom>Bottom Tooltip</Button>
+  <Button tooltip='Tooltip with a long Text. So we use is-tooltip-multiline modifier to force multiline display.' tooltipMultiline>Multiline Tooltip</Button>
+```
+
+
 ### With Font Awesome icons
 Choose icons in [Font Awesome](https://fontawesome.com/icons)
 ```jsx

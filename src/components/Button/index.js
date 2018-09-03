@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class Button extends React.PureComponent {
   static propTypes = {
     testKey: PropTypes.string,
+    title: PropTypes.string,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
     isStatic: PropTypes.bool,
@@ -17,6 +18,11 @@ export default class Button extends React.PureComponent {
     outlined: PropTypes.bool,
     disabled: PropTypes.bool,
     icon: PropTypes.string,
+    tooltip: PropTypes.string,
+    tooltipMultiline: PropTypes.string,
+    tooltipLeft: PropTypes.bool,
+    tooltipRight: PropTypes.bool,
+    tooltipBottom: PropTypes.bool,
     onClick: PropTypes.func
   }
 
@@ -27,6 +33,7 @@ export default class Button extends React.PureComponent {
   render () {
     const {
       testKey,
+      title,
       primary,
       secondary,
       isStatic,
@@ -39,11 +46,21 @@ export default class Button extends React.PureComponent {
       outlined,
       disabled,
       icon,
+      tooltip,
+      tooltipMultiline,
+      tooltipLeft,
+      tooltipRight,
+      tooltipBottom,
       onClick,
       children
     } = this.props
 
     const classes = classNames('button', {
+      tooltip: tooltip,
+      'is-tooltip-multiline': tooltipMultiline,
+      'is-tooltip-right': tooltipRight,
+      'is-tooltip-left': tooltipLeft,
+      'is-tooltip-bottom': tooltipBottom,
       'is-primary': primary,
       'is-dark': secondary,
       'is-static': isStatic,
@@ -59,9 +76,11 @@ export default class Button extends React.PureComponent {
     return (
       <button
         data-test={testKey}
+        data-tooltip={tooltip}
         className={classes}
         disabled={disabled}
         onClick={onClick}
+        title={title}
       >
         {icon ? <Icon icon={icon} /> : null}
         {icon && children ? <span>{children}</span> : children}
