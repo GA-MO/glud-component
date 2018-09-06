@@ -85,7 +85,7 @@ export default class Select extends Component {
           disabled={disabled}
         >
           {options.map((option, i) => (
-            <option key={i} value={option.value}>
+            <option key={i} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
