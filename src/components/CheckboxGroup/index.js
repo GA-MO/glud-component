@@ -16,7 +16,7 @@ export default class CheckboxGroup extends Component {
     inline: false,
     options: [],
     value: [],
-    onChange: values => null
+    onChange: (values) => null
   }
 
   state = {
@@ -24,14 +24,16 @@ export default class CheckboxGroup extends Component {
   }
 
   componentDidMount = () => {
+    const { options, value } = this.props
     this.setState(() => ({
-      values: this.getOptionIsChecked(this.props.options)
+      values: this.getOptionIsChecked(options, value)
     }))
   }
 
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = (nextProps) => {
+    const { options, value } = nextProps
     this.setState(() => ({
-      values: this.getOptionIsChecked(nextProps.options)
+      values: this.getOptionIsChecked(options, value)
     }))
   }
 
@@ -40,38 +42,38 @@ export default class CheckboxGroup extends Component {
     return value === currentValue
   }
 
-  isChecked = currentValue => {
+  isChecked = (currentValue) => {
     const { values } = this.state
     const { value } = this.props
     const valueChecked = values.length > 0 ? values : value
-    return valueChecked.some(item => this.isOptionChecked(item, currentValue))
+    return valueChecked.some((item) => this.isOptionChecked(item, currentValue))
   }
 
-  getOptionIsChecked = options => {
-    return options.filter(item => this.isChecked(item.value))
+  getOptionIsChecked = (options, value) => {
+    return options.filter((item) => value.some((v) => v === item.value))
   }
 
   handleCheckboxChange = (option, isChecked) => {
     const { values } = this.state
 
     if (isChecked) {
-      const nextValues = [...values, option]
+      const nextValues = [ ...values, option ]
       this.updateValues(nextValues)
       return true
     }
 
-    const nextValues = values.filter(item => item.value !== option.value)
+    const nextValues = values.filter((item) => item.value !== option.value)
     this.updateValues(nextValues)
   }
 
-  updateValues = nextValues => {
+  updateValues = (nextValues) => {
     this.setState(() => ({
       values: nextValues
     }))
     this.props.onChange(nextValues)
   }
 
-  renderCheckbox = option => (
+  renderCheckbox = (option) => (
     <Checkbox
       testKey={option.testKey}
       name={option.name}
@@ -80,14 +82,14 @@ export default class CheckboxGroup extends Component {
       value={option.value}
       disabled={option.disabled}
       checked={this.isChecked(option.value)}
-      onChange={isChecked => this.handleCheckboxChange(option, isChecked)}
+      onChange={(isChecked) => this.handleCheckboxChange(option, isChecked)}
     />
   )
 
   renderCheckboxOptions = () => {
     const { inline, options } = this.props
 
-    if (inline) return options.map(option => this.renderCheckbox(option))
+    if (inline) return options.map((option) => this.renderCheckbox(option))
 
     return options.map((option, i) => (
       <div key={i} className='box-field'>
@@ -98,15 +100,15 @@ export default class CheckboxGroup extends Component {
 
   render () {
     const { labelGroup, isRequired } = this.props
-
+    console.log('in', this.state)
     return (
       <div className='field'>
-        {labelGroup &&
+        {labelGroup && (
           <label className='label'>
-            {labelGroup}
-            {' '}
+            {labelGroup}{' '}
             {isRequired && <i className='required fas fa-asterisk' />}
-          </label>}
+          </label>
+        )}
         {this.renderCheckboxOptions()}
       </div>
     )
