@@ -100,7 +100,6 @@ export default class CheckboxGroup extends Component {
 
   render () {
     const { labelGroup, isRequired } = this.props
-    console.log('in', this.state)
     return (
       <div className='field'>
         {labelGroup && (
