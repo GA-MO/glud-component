@@ -8,7 +8,7 @@ Example initial value
   ...
 
   const Moment = extendMoment(moment)
-  const start = Moment().startof('days')
+  const start = Moment().startOf('days')
   const end = Moment().add(1, 'days')
   const initialValue = Moment.range(start, end)
 
