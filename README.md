@@ -1,5 +1,5 @@
 # glud-component
-React Components [UI Documents](http://glud-component.surge.sh/)
+React Components [UI Documents](http://glud-component.now.sh/)
 
 #### Install with npm
 
