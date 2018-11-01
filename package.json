@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "",
   "repository": {
     "url": "",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "better-npm-run dev",
-    "deploy": "surge --project ./styleguide --domain glud-component.surge.sh",
+    "deploy": "cp now.json styleguide/ && now ./styleguide && now alias",
     "build:lib": "better-npm-run clean:lib && babel src/components --out-dir lib",
     "build": "npm run clean && better-npm-run build",
     "build:client": "npm run clean && better-npm-run build:client",
