@@ -9,7 +9,8 @@ export default class Input extends PureComponent {
     type: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    value: PropTypes.string,
+    defaultValue: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
     maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
@@ -51,6 +52,7 @@ export default class Input extends PureComponent {
       type,
       label,
       name,
+      defaultValue,
       value,
       maxLength,
       isRequired,
@@ -91,6 +93,7 @@ export default class Input extends PureComponent {
         className={classInput}
         type={type}
         name={name}
+        defaultValue={defaultValue}
         value={value}
         maxLength={maxLength}
         placeholder={placeholder}
