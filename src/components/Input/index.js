@@ -27,7 +27,10 @@ export default class Input extends PureComponent {
     readOnly: PropTypes.bool,
     loading: PropTypes.bool,
     iconLeft: PropTypes.func,
-    iconRight: PropTypes.func
+    iconRight: PropTypes.func,
+    large: PropTypes.bool,
+    medium: PropTypes.bool,
+    small: PropTypes.bool
   }
 
   static defaultProps = {
@@ -70,12 +73,18 @@ export default class Input extends PureComponent {
       readOnly,
       loading,
       iconLeft,
-      iconRight
+      iconRight,
+      large,
+      medium,
+      small
     } = this.props
 
     const status = {
       'is-success': isSuccess,
-      'is-danger': isError
+      'is-danger': isError,
+      'is-large': large,
+      'is-medium': medium,
+      'is-small': small
     }
 
     const classInput = classNames('input', status)

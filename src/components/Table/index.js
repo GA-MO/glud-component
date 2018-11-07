@@ -54,6 +54,9 @@ export default class Table extends PureComponent {
     onChangePage: PropTypes.func,
     placeholderSearch: PropTypes.string,
     fieldsForSearch: PropTypes.object,
+    /**
+     * top | bottom | both
+     */
     pagination: PropTypes.string,
     viewPerPage: PropTypes.number,
     totalRecord: PropTypes.number
@@ -140,6 +143,10 @@ export default class Table extends PureComponent {
 
     const ttr = dataFromSearch ? dataFromSearch.length : totalRecord
 
+    const isShowPaginationTop = pagination && /(top|both)/.test(pagination)
+    const isShowPaginationBottom =
+      pagination && /(bottom|both)/.test(pagination)
+
     return (
       <div>
         {fieldsForSearch && (
@@ -155,8 +162,7 @@ export default class Table extends PureComponent {
             </Column>
           </Row>
         )}
-        {pagination &&
-        pagination === 'top' && (
+        {isShowPaginationTop && (
           <div>
             <PaginationGroup
               pagination={paginations}
@@ -177,8 +183,7 @@ export default class Table extends PureComponent {
             )}
           </table>
         </div>
-        {pagination &&
-        pagination === 'bottom' && (
+        {isShowPaginationBottom && (
           <PaginationGroup
             pagination={paginations}
             totalRecord={ttr}
