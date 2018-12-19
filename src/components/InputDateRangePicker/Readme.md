@@ -8,7 +8,7 @@ Example initial value
   ...
 
   const Moment = extendMoment(moment)
-  const start = Moment().startOf('days')
+  const start = Moment().startOf('day')
   const end = Moment().add(1, 'days')
   const initialValue = Moment.range(start, end)
 
@@ -17,5 +17,12 @@ Example initial value
   <InputDateRangePicker label='Select Date' value={initialValue} />
 ```
 ```jsx
-  <InputDateRangePicker label='Select Date' />
+  const moment = require('moment')
+  const { extendMoment } = require('moment-range')
+  const Moment = extendMoment(moment)
+  const start = Moment().startOf('day')
+  const end = Moment().add(1, 'days')
+  const initialValue = Moment.range(start, end);
+  
+  <InputDateRangePicker label='Select Date' value={initialValue} />
 ```

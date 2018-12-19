@@ -8,6 +8,7 @@ class Modal extends Component {
   static propTypes = {
     testKey: PropTypes.string,
     title: PropTypes.string,
+    centered: PropTypes.bool,
     open: PropTypes.bool,
     inline: PropTypes.bool,
     onClose: PropTypes.func
@@ -18,10 +19,11 @@ class Modal extends Component {
   }
 
   render () {
-    const { testKey, title, open, inline, onClose, children } = this.props
+    const { testKey, title, centered, open, inline, onClose, children } = this.props
     const modalClass = classNames('', {
       modal: !inline,
-      'is-active': open
+      'is-active': open,
+      'is-centered': centered
     })
 
     return (
