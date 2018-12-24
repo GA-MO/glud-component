@@ -19,7 +19,7 @@ export default class Button extends React.PureComponent {
     disabled: PropTypes.bool,
     icon: PropTypes.string,
     tooltip: PropTypes.string,
-    tooltipMultiline: PropTypes.string,
+    tooltipMultiline: PropTypes.bool,
     tooltipLeft: PropTypes.bool,
     tooltipRight: PropTypes.bool,
     tooltipBottom: PropTypes.bool,
