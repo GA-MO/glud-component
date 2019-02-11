@@ -1,7 +1,7 @@
-
 $colorDefault: #3273dc;
 
-.react-select__control--is-focused, .react-select__control--is-focused:hover {
+.react-select__control--is-focused,
+.react-select__control--is-focused:hover {
   border-color: $colorDefault;
   box-shadow: 0 0 0 0.125em rgba($colorDefault, 0.25);
 }
@@ -41,10 +41,25 @@ $colorDefault: #3273dc;
 }
 
 .select {
+  .react-select__single-value + div,
+  .react-select__placeholder + div,
+  .react-select__value-container > div {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .react-select__dropdown-indicator {
+    padding: 0;
+  }
   .react-select__dropdown-indicator svg {
     opacity: 0;
   }
   .react-select__indicator-separator {
     opacity: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .react-select__clear-indicator {
+    padding: 3px;
+    margin-right: 5px;
   }
 }
