@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 export default class Switch extends PureComponent {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     checked: PropTypes.bool,
@@ -15,7 +15,7 @@ export default class Switch extends PureComponent {
   }
 
   static defaultProps = {
-    testKey: 'switch',
+    testID: 'switch',
     label: 'checkbox',
     checked: false,
     onToggle: (isChecked) => null
@@ -33,12 +33,12 @@ export default class Switch extends PureComponent {
 
   render () {
     const { isChecked } = this.state
-    const { testKey, label, onlyContain } = this.props
+    const { testID, label, onlyContain } = this.props
 
     const switchItem = (
       <div className='switch'>
         <input
-          data-test={testKey}
+          data-test-id={testID}
           type='checkbox'
           className='cbx'
           checked={isChecked}

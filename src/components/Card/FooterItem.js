@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 
 export default class CardFooterItem extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onClick: PropTypes.func
   }
 
   static defaultProps = {
-    testKey: 'card-action'
+    testID: 'card-action'
   }
 
   render () {
-    const { testKey, children, onClick } = this.props
+    const { testID, children, onClick } = this.props
     return (
       <a
-        data-test={testKey}
+        data-test-id={testID}
         href='javascript:;'
         className='card-footer-item has-text-grey-dark'
         onClick={onClick}

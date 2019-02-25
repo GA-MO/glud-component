@@ -53,7 +53,7 @@ class Tab extends PureComponent {
           <ul>
             {React.Children.map(children, (child, index) => (
               <TabItem
-                testKey={child.props.testKey}
+                testID={child.props.testID}
                 name={child.props.name}
                 title={child.props.title}
                 icon={child.props.icon}

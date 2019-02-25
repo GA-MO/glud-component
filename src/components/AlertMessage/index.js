@@ -4,14 +4,14 @@ import { render } from 'react-dom'
 
 class AlertMessage extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     type: PropTypes.string.isRequired,
     message: PropTypes.string,
     closeTime: PropTypes.number
   }
 
   static defaultProps = {
-    testKey: 'close-alert-message'
+    testID: 'close-alert-message'
   }
 
   componentDidMount = () => {
@@ -22,12 +22,12 @@ class AlertMessage extends Component {
   }
 
   render () {
-    const { testKey, type, message } = this.props
+    const { testID, type, message } = this.props
     return (
       <div className={type}>
         <div className='box-alert-message animated fadeInDown'>
           <a
-            data-test={testKey}
+            data-test-id={testID}
             href='javascript:;'
             onClick={() => closeAlertMessage()}
             className='close'

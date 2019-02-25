@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 export default class Button extends React.PureComponent {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     title: PropTypes.string,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
@@ -27,12 +27,12 @@ export default class Button extends React.PureComponent {
   }
 
   static defaultProps = {
-    testKey: 'button'
+    testID: 'button'
   }
 
   render () {
     const {
-      testKey,
+      testID,
       title,
       primary,
       secondary,
@@ -75,7 +75,7 @@ export default class Button extends React.PureComponent {
 
     return (
       <button
-        data-test={testKey}
+        data-test-id={testID}
         data-tooltip={tooltip}
         className={classes}
         disabled={disabled}

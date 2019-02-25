@@ -4,9 +4,10 @@ import classNames from 'classnames'
 
 export default class TextArea extends PureComponent {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
+    defaultValue: PropTypes.string,
     value: PropTypes.string,
     maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
@@ -26,15 +27,16 @@ export default class TextArea extends PureComponent {
   }
 
   static defaultProps = {
-    testKey: 'textarea',
+    testID: 'textarea',
     rows: 4
   }
 
   render () {
     const {
-      testKey,
+      testID,
       onlyContain,
       label,
+      defaultValue,
       value,
       maxLength,
       isRequired,
@@ -67,8 +69,9 @@ export default class TextArea extends PureComponent {
 
     const inputField = (
       <textarea
-        data-test={testKey}
+        data-test-id={testID}
         className={classInput}
+        defaultValue={defaultValue}
         value={value}
         maxLength={maxLength}
         placeholder={placeholder}

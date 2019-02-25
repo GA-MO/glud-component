@@ -53,7 +53,7 @@ export default class Radio extends Component {
   renderRadio = (option) => (
     <span key={option.value}>
       <input
-        data-test={option.testKey}
+        data-test-id={option.testID}
         type='radio'
         className='is-checkradio is-primary'
         name={this.props.name}

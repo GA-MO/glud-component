@@ -11,7 +11,7 @@ const moment = extendMoment(Moment)
 
 export default class InputDateRangePicker extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -32,7 +32,7 @@ export default class InputDateRangePicker extends Component {
   }
 
   static defaultProps = {
-    testKey: 'input-date-picker-range',
+    testID: 'input-date-picker-range',
     format: 'DD/MM/YYYY',
     onChange: () => null,
     onFocus: () => null,
@@ -89,7 +89,7 @@ export default class InputDateRangePicker extends Component {
   render () {
     const { isShowCalendar, dateRangeValue } = this.state
     const {
-      testKey,
+      testID,
       onlyContain,
       label,
       name,
@@ -112,7 +112,7 @@ export default class InputDateRangePicker extends Component {
     return (
       <Fragment>
         <Input
-          data-test={testKey}
+          data-test-id={testID}
           ref={(input) => (this.input = input)}
           onlyContain={onlyContain}
           label={label}

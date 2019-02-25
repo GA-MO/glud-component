@@ -7,7 +7,7 @@ import customTyeps from './customTyeps-util'
 
 export default class InputDatePicker extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -28,7 +28,7 @@ export default class InputDatePicker extends Component {
   }
 
   static defaultProps = {
-    testKey: 'input-date-picker',
+    testID: 'input-date-picker',
     format: 'DD/MM/YYYY',
     onChange: () => null,
     onFocus: () => null,
@@ -85,7 +85,7 @@ export default class InputDatePicker extends Component {
   render () {
     const { isShowCalendar, dateValue } = this.state
     const {
-      testKey,
+      testID,
       onlyContain,
       label,
       name,
@@ -102,7 +102,7 @@ export default class InputDatePicker extends Component {
     return (
       <Fragment>
         <Input
-          data-test={testKey}
+          data-test-id={testID}
           ref={(input) => (this.input = input)}
           onlyContain={onlyContain}
           label={label}

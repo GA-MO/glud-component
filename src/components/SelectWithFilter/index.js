@@ -6,7 +6,7 @@ import classNames from 'classnames'
 
 export default class SelectWithFilter extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     inline: PropTypes.bool,
     name: PropTypes.string,
@@ -27,7 +27,7 @@ export default class SelectWithFilter extends Component {
   }
 
   static defaultProps = {
-    testKey: 'select',
+    testID: 'select',
     options: [
       {
         label: 'Select dropdown',
@@ -42,7 +42,7 @@ export default class SelectWithFilter extends Component {
 
   render () {
     const {
-      testKey,
+      testID,
       onlyContain,
       inline,
       name,
@@ -78,7 +78,7 @@ export default class SelectWithFilter extends Component {
     })
 
     const inputField = (
-      <div className={classSelect} data-test={testKey}>
+      <div className={classSelect} data-test-id={testID}>
         <ReactSelect
           classNamePrefix='react-select'
           name={name}

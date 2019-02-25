@@ -6,14 +6,14 @@ import Button from '../Button'
 
 class Confirm extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     title: PropTypes.string,
     buttons: PropTypes.array.isRequired,
     content: PropTypes.node
   }
 
   static defaultProps = {
-    testKey: 'confirm',
+    testID: 'confirm',
     title: 'Title',
     buttons: [
       {
@@ -42,9 +42,9 @@ class Confirm extends Component {
   }
 
   render () {
-    const { testKey, title, buttons, content } = this.props
+    const { testID, title, buttons, content } = this.props
     return (
-      <div data-test={testKey} className='box-confirm animated fadeInDown'>
+      <div data-test-id={testID} className='box-confirm animated fadeInDown'>
         <Modal title={title} centered open onClose={close}>
           <Modal.Content>{content}</Modal.Content>
           <Modal.Footer>

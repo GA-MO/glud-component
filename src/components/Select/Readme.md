@@ -12,7 +12,6 @@
   />
   <Select
     label='Email'
-    value='my@gmail.com'
     placeholder='Text input'
     message='This field valid'
     isSuccess
@@ -38,29 +37,29 @@
 
 ```jsx
 <Select
-   label="Disabled Option"
-   options={[
-      {
-         label: 'Option 1',
-         value: 1
-      },
-      {
-         label: 'Option 2',
-         value: 2,
-         disabled: true
-      },
-      {
-         label: 'Option 3',
-         value: 3
-      }
-   ]}
+  label='Disabled Option'
+  options={[
+    {
+      label: 'Option 1',
+      value: 1
+    },
+    {
+      label: 'Option 2',
+      value: 2,
+      disabled: true
+    },
+    {
+      label: 'Option 3',
+      value: 3
+    }
+  ]}
 />
 ```
 
 ### Use Only Contain
 
 ```jsx
-<Select onlyContain placeholder="Text input" />
+<Select onlyContain placeholder='Text input' />
 ```
 
 ### With Font Awesome icons
@@ -68,5 +67,5 @@
 Choose icons in [Font Awesome](https://fontawesome.com/icons)
 
 ```jsx
-<Select onlyContain iconLeft={() => <i className="fas fa-globe" />} placeholder="Text input" />
+<Select onlyContain iconLeft={() => <i className='fas fa-globe' />} placeholder='Text input' />
 ```

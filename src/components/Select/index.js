@@ -4,12 +4,13 @@ import classNames from 'classnames'
 
 export default class Select extends Component {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     inline: PropTypes.bool,
     name: PropTypes.string,
     label: PropTypes.string,
-    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+    defaultValue: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
     isError: PropTypes.bool,
@@ -24,7 +25,7 @@ export default class Select extends Component {
   }
 
   static defaultProps = {
-    testKey: 'select',
+    testID: 'select',
     options: [
       {
         label: 'Select dropdown',
@@ -39,11 +40,12 @@ export default class Select extends Component {
 
   render () {
     const {
-      testKey,
+      testID,
       onlyContain,
       inline,
       name,
       label,
+      defaultValue,
       value,
       isRequired,
       isSuccess,
@@ -77,10 +79,11 @@ export default class Select extends Component {
       <div className={classSelect}>
         <select
           name={name}
-          data-test={testKey}
+          data-test-id={testID}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          defaultValue={defaultValue}
           value={value}
           disabled={disabled}
         >

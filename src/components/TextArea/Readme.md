@@ -12,7 +12,7 @@
   />
   <TextArea
     label='Message'
-    value='Hello message'
+    defaultValue='Hello message'
     placeholder='Text input'
     message='This field valid'
     isSuccess
@@ -42,8 +42,5 @@
 ### Use Only Contain
 
 ```jsx
-  <TextArea
-    onlyContain
-    placeholder='Text input'
-  />
+<TextArea onlyContain placeholder='Text input' />
 ```

@@ -55,7 +55,7 @@ export default class RadioButton extends PureComponent {
   renderRadio = (option) => (
     <Button
       key={option.value}
-      data-test={option.testKey}
+      data-test-id={option.testID}
       primary={this.isChecked(option.value)}
       disabled={option.disabled}
       onClick={() => this.handleButtonClick(option.value)}

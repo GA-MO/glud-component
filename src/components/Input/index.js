@@ -1,16 +1,21 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import Cleave from 'cleave.js'
 
 export default class Input extends PureComponent {
   static propTypes = {
-    testKey: PropTypes.string,
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     type: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    defaultValue: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
-    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /**
+     * Using Cleave.js https://github.com/nosir/cleave.js/blob/master/doc/options.md
+     */
+    formatOptions: PropTypes.shape({}),
     maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
@@ -34,8 +39,14 @@ export default class Input extends PureComponent {
   }
 
   static defaultProps = {
-    testKey: 'input',
-    type: 'text'
+    testID: 'input',
+    type: 'text',
+    onChange: () => null,
+    onFocus: () => null,
+    onBlur: () => null,
+    onKeyDown: () => null,
+    onKeyUp: () => null,
+    onKeyPress: () => null
   }
 
   blur = () => {
@@ -48,9 +59,27 @@ export default class Input extends PureComponent {
 
   getInput = () => this.input
 
+  componentDidMount = () => {
+    const { formatOptions, onChange } = this.props
+    if (formatOptions) {
+      const options = {
+        ...formatOptions,
+        onValueChanged: onChange
+      }
+      this.cleave = new Cleave(this.input, options)
+    }
+  }
+
+  componentWillUnmount = () => {
+    const { formatOptions } = this.props
+    if (formatOptions) {
+      this.cleave.destroy()
+    }
+  }
+
   render () {
     const {
-      testKey,
+      testID,
       onlyContain,
       type,
       label,
@@ -97,8 +126,8 @@ export default class Input extends PureComponent {
 
     const inputField = (
       <input
-        data-test={testKey}
-        ref={(input) => (this.input = input)}
+        data-test-id={testID}
+        ref={input => (this.input = input)}
         className={classInput}
         type={type}
         name={name}
