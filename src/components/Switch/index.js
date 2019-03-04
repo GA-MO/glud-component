@@ -8,6 +8,7 @@ export default class Switch extends PureComponent {
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     checked: PropTypes.bool,
+    disabled: PropTypes.bool,
     /**
      * Return (isChecked)
      */
@@ -18,7 +19,7 @@ export default class Switch extends PureComponent {
     testID: 'switch',
     label: 'checkbox',
     checked: false,
-    onToggle: (isChecked) => null
+    onToggle: isChecked => null
   }
 
   state = {
@@ -27,13 +28,13 @@ export default class Switch extends PureComponent {
 
   handleCheckboxChange = () => {
     const { onToggle } = this.props
-    this.setState((prevState) => ({ isChecked: !prevState.isChecked }))
+    this.setState(prevState => ({ isChecked: !prevState.isChecked }))
     onToggle(!this.state.isChecked)
   }
 
   render () {
     const { isChecked } = this.state
-    const { testID, label, onlyContain } = this.props
+    const { testID, label, onlyContain, disabled } = this.props
 
     const switchItem = (
       <div className='switch'>
@@ -43,6 +44,7 @@ export default class Switch extends PureComponent {
           className='cbx'
           checked={isChecked}
           readOnly='readOnly'
+          disabled={disabled}
           onClick={this.handleCheckboxChange}
         />
         <label className='ui-switch' />
