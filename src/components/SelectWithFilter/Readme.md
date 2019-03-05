@@ -12,35 +12,31 @@ This component base on [React Select](https://react-select.com/home) you can use
   isMulti
   options={[
     {
-      label: 'Option 1 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 1',
       value: 1
     },
     {
-      label: 'Option 2 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 2',
       value: 2,
       disabled: true
     },
     {
-      label: 'Option 3 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 3',
       value: 3
     },
     {
-      label: 'Option 4 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 4',
       value: 4
     }
   ]}
   defaultValue={[
     {
-      label: 'Option 3 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 3',
       value: 3
     },
     {
-      label: 'Option 4 asfa asdf asdfasf asdfdfas ffafasdasfda',
+      label: 'Option 4',
       value: 4
-    },
-    {
-      label: 'Option 2 asfa asdf asdfasf asdfdfas ffafasdasfda',
-      value: 2
     }
   ]}
 />
