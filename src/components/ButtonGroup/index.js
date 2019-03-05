@@ -7,23 +7,21 @@ export default class ButtonGroup extends React.PureComponent {
     hasAddons: PropTypes.bool,
     centered: PropTypes.bool,
     right: PropTypes.bool,
-    fullwidth: PropTypes.bool
+    fullwidth: PropTypes.bool,
+    fullwidthEqualSized: PropTypes.bool
   }
 
   render () {
-    const { hasAddons, centered, right, fullwidth, children } = this.props
+    const { hasAddons, centered, right, fullwidth, fullwidthEqualSized, children } = this.props
 
     const classes = classNames('buttons', {
       'has-addons': hasAddons,
       'is-centered': centered,
       'is-right': right,
-      'fullwidth': fullwidth
+      fullwidth: fullwidth || fullwidthEqualSized,
+      equal: fullwidthEqualSized
     })
 
-    return (
-      <div className={classes}>
-        {children}
-      </div>
-    )
+    return <div className={classes}>{children}</div>
   }
 }
