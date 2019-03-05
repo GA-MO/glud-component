@@ -13,6 +13,7 @@ export default class SelectWithFilter extends Component {
     label: PropTypes.string,
     defaultValue: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
     value: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
+    isMulti: PropTypes.bool,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
     isError: PropTypes.bool,
@@ -49,6 +50,7 @@ export default class SelectWithFilter extends Component {
       label,
       value,
       defaultValue,
+      isMulti,
       isRequired,
       isSuccess,
       isError,
@@ -69,7 +71,8 @@ export default class SelectWithFilter extends Component {
     }
 
     const classSelect = classNames('select', status, {
-      inline: inline
+      inline: inline,
+      'is-multi': isMulti
     })
     const classHelp = classNames('help', status)
     const classControl = classNames('control', {
@@ -90,7 +93,7 @@ export default class SelectWithFilter extends Component {
           isDisabled={disabled}
           options={options}
           styles={style(this.props)}
-          isOptionDisabled={(option) => option.disabled}
+          isOptionDisabled={option => option.disabled}
           {...this.props}
         />
       </div>

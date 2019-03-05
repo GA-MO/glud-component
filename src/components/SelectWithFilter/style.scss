@@ -41,6 +41,16 @@ $colorDefault: #3273dc;
 }
 
 .select {
+  &.is-multi {
+    height: auto;
+    .react-select__control {
+      height: auto;
+    }
+    .react-select__value-container > .react-select__multi-value {
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+  }
   .react-select__single-value + div,
   .react-select__placeholder + div,
   .react-select__value-container > div {
