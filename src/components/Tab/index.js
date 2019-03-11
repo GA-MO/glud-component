@@ -10,6 +10,7 @@ class Tab extends PureComponent {
     centered: PropTypes.bool,
     right: PropTypes.bool,
     fullwidth: PropTypes.bool,
+    fullwidthEqualSized: PropTypes.bool,
     /**
      * Return (tab, tabName)
      */
@@ -40,12 +41,13 @@ class Tab extends PureComponent {
 
   render () {
     const { tabActive } = this.state
-    const { centered, right, fullwidth, children } = this.props
+    const { centered, right, fullwidth, fullwidthEqualSized, children } = this.props
 
     const classes = classNames('tabs', {
       'is-centered': centered,
       'is-right': right,
-      'is-fullwidth': fullwidth
+      'is-fullwidth': fullwidth || fullwidthEqualSized,
+      equal: fullwidthEqualSized
     })
     return (
       <div className='box-tab'>

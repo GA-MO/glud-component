@@ -1,10 +1,16 @@
 .box-tab {
   // border: 1px solid #dbdbdb;
 }
+.tabs li {
+  background: #fff;
+}
 .tabs li.is-active a {
   border-bottom-color: $primary;
   color: $primary;
 }
 .tab-content {
   padding: 0.5em 1em 1.5rem;
+}
+.tabs.is-fullwidth.equal li {
+  width: 0;
 }
