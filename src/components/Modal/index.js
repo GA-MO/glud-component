@@ -11,15 +11,26 @@ class Modal extends Component {
     centered: PropTypes.bool,
     open: PropTypes.bool,
     inline: PropTypes.bool,
+    closeOnClickOutside: PropTypes.bool,
     onClose: PropTypes.func
   }
 
   static defaultProps = {
-    testID: 'modal'
+    testID: 'modal',
+    closeOnClickOutside: true
   }
 
   render () {
-    const { testID, title, centered, open, inline, onClose, children } = this.props
+    const {
+      testID,
+      title,
+      centered,
+      open,
+      inline,
+      closeOnClickOutside,
+      onClose,
+      children
+    } = this.props
     const modalClass = classNames('', {
       modal: !inline,
       'is-active': open,
@@ -32,20 +43,14 @@ class Modal extends Component {
           <div
             data-test-id={testID}
             className='modal-background'
-            onClick={() => onClose() || null}
+            onClick={() => (closeOnClickOutside && onClose()) || null}
           />
         )}
         <div className='modal-card'>
           {title && (
             <header className='modal-card-head'>
               <p className='modal-card-title'>{title}</p>
-              {onClose && (
-                <button
-                  data-test-id={testID}
-                  className='delete'
-                  onClick={onClose}
-                />
-              )}
+              {onClose && <button data-test-id={testID} className='delete' onClick={onClose} />}
             </header>
           )}
           {children}
