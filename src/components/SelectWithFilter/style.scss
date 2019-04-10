@@ -51,6 +51,12 @@ $colorDefault: #3273dc;
       margin-bottom: 2px;
     }
   }
+  .react-select__control {
+    height: 2.25em;
+  }
+  .react-select__menu {
+    z-index: 99;
+  }
   .react-select__single-value + div,
   .react-select__placeholder + div,
   .react-select__value-container > div {
@@ -72,4 +78,18 @@ $colorDefault: #3273dc;
     padding: 3px;
     margin-right: 5px;
   }
+}
+
+.field.has-addons .control:not(:first-child):not(:last-child) .select .react-select__control {
+  border-radius: 0;
+}
+
+.field.has-addons .control:last-child .select .react-select__control {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.field.has-addons .control:first-child .select .react-select__control {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
