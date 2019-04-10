@@ -4,14 +4,19 @@ import { render } from 'react-dom'
 
 class Loading extends Component {
   static propTypes = {
-    label: PropTypes.string
+    label: PropTypes.string,
+    component: PropTypes.node
   }
 
   render () {
-    const { label } = this.props
+    const { label, component } = this.props
     return (
       <div className='box-loading open'>
-        <div className='loading'>{label}</div>
+        <div className='loading'>
+          <div>{label}</div>
+          <br />
+          {component}
+        </div>
       </div>
     )
   }
@@ -32,7 +37,7 @@ function openLoading (properties) {
 }
 
 function closeLoading () {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const target = document.getElementById('box-react-loading')
     if (!target) resolve()
 
