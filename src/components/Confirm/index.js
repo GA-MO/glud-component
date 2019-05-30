@@ -9,7 +9,9 @@ class Confirm extends Component {
     testID: PropTypes.string,
     title: PropTypes.string,
     buttons: PropTypes.array.isRequired,
-    content: PropTypes.node
+    content: PropTypes.node,
+    closeButton: PropTypes.bool,
+    closeOnClickOutside: PropTypes.bool
   }
 
   static defaultProps = {
@@ -26,7 +28,9 @@ class Confirm extends Component {
         onClick: () => null
       }
     ],
-    content: <div>Content is here.</div>
+    content: <div>Content is here.</div>,
+    closeButton: true,
+    closeOnClickOutside: false
   }
 
   componentDidMount = () => {
@@ -36,16 +40,22 @@ class Confirm extends Component {
     }
   }
 
-  handleClickButton = (button) => {
+  handleClickButton = button => {
     if (button.onClick) button.onClick()
     close()
   }
 
   render () {
-    const { testID, title, buttons, content } = this.props
+    const { testID, title, buttons, content, closeButton, closeOnClickOutside } = this.props
     return (
       <div data-test-id={testID} className='box-confirm animated fadeInDown'>
-        <Modal title={title} centered open onClose={close}>
+        <Modal
+          title={title}
+          centered
+          closeOnClickOutside={closeOnClickOutside}
+          open
+          onClose={closeButton && close}
+        >
           <Modal.Content>{content}</Modal.Content>
           <Modal.Footer>
             {buttons.map((button, i) => (
@@ -79,7 +89,7 @@ function open (properties) {
 }
 
 function close () {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const target = document.getElementById('box-react-confirm')
     if (!target) resolve()
 
