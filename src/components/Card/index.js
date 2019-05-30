@@ -8,7 +8,10 @@ import Footer from '../Card/Footer'
 
 class Card extends Component {
   static propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node
+    ]),
     withToggle: PropTypes.bool,
     open: PropTypes.bool
   }
