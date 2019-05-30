@@ -1,5 +1,5 @@
 {
+  "version": 2,
   "name": "glud-component",
-  "alias": "glud-component",
-  "type": "static"
+  "alias": "glud-component"
 }
