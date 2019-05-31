@@ -1,5 +1,8 @@
 .buttons.fullwidth.equal {
+  align-items: stretch;
   .button {
     width: 0;
+    height: auto;
+    white-space: pre-wrap;
   }
 }
