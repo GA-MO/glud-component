@@ -7,11 +7,7 @@ export default class Checkbox extends PureComponent {
     testID: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    value: PropTypes.oneOfType([
-      PropTypes.shape(),
-      PropTypes.string,
-      PropTypes.number
-    ]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string, PropTypes.number]).isRequired,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
     /**
@@ -32,9 +28,17 @@ export default class Checkbox extends PureComponent {
     isChecked: this.props.checked
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (this.state.checked !== nextProps.checked) {
+      this.setState(() => ({
+        isChecked: nextProps.checked
+      }))
+    }
+  }
+
   handleCheckboxChange = () => {
     const { onChange, value } = this.props
-    this.setState((prevState) => ({ isChecked: !prevState.isChecked }))
+    this.setState(prevState => ({ isChecked: !prevState.isChecked }))
     onChange(!this.state.isChecked, value)
   }
 
@@ -57,9 +61,7 @@ export default class Checkbox extends PureComponent {
           readOnly='readOnly'
           disabled={disabled}
         />
-        <label onClick={disabled ? null : this.handleCheckboxChange}>
-          {label}
-        </label>
+        <label onClick={disabled ? null : this.handleCheckboxChange}>{label}</label>
       </span>
     )
   }
