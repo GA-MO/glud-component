@@ -9,8 +9,7 @@ export default class Radio extends Component {
     isRequired: PropTypes.bool,
     inline: PropTypes.bool,
     options: PropTypes.array.isRequired,
-    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
-      .isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onChange: PropTypes.func
   }
 
@@ -18,7 +17,7 @@ export default class Radio extends Component {
     inline: false,
     options: [],
     value: [],
-    onChange: (value) => null
+    onChange: value => null
   }
 
   state = {
@@ -31,29 +30,28 @@ export default class Radio extends Component {
     }))
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     this.setState(() => ({
       value: nextProps.value
     }))
   }
 
-  handleRadioClick = (value) => {
+  handleRadioClick = value => {
     const { onChange } = this.props
-    this.setState((prevState) => ({ value }))
+    this.setState(prevState => ({ value }))
     onChange(value)
   }
 
-  isChecked = (optionValue) => {
+  isChecked = optionValue => {
     const sValue = this.state.value
     const value = this.props.value
     const currentValue = sValue !== '' ? sValue : value
     return currentValue === optionValue
   }
 
-  renderRadio = (option) => (
+  renderRadio = (option, index) => (
     <span key={option.value}>
       <input
-        data-test-id={option.testID}
         type='radio'
         className='is-checkradio is-primary'
         name={this.props.name}
@@ -62,8 +60,8 @@ export default class Radio extends Component {
         disabled={option.disabled}
       />
       <label
-        onClick={() =>
-          option.disabled ? null : this.handleRadioClick(option.value)}
+        data-test-id={`${this.props.name}-${index}`}
+        onClick={() => (option.disabled ? null : this.handleRadioClick(option.value))}
       >
         {option.label}
       </label>
@@ -73,11 +71,11 @@ export default class Radio extends Component {
   renderRadioOptions = () => {
     const { inline, options } = this.props
 
-    if (inline) return options.map((option) => this.renderRadio(option))
+    if (inline) return options.map((option, index) => this.renderRadio(option, index))
 
-    return options.map((option, i) => (
-      <div key={i} className='box-field'>
-        {this.renderRadio(option)}
+    return options.map((option, index) => (
+      <div key={index} className='box-field'>
+        {this.renderRadio(option, index)}
       </div>
     ))
   }
@@ -89,8 +87,7 @@ export default class Radio extends Component {
       <div className='field'>
         {labelGroup && (
           <label className='label'>
-            {labelGroup}{' '}
-            {isRequired && <i className='required fas fa-asterisk' />}
+            {labelGroup} {isRequired && <i className='required fas fa-asterisk' />}
           </label>
         )}
         {this.renderRadioOptions()}

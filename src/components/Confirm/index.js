@@ -48,8 +48,9 @@ class Confirm extends Component {
   render () {
     const { testID, title, buttons, content, closeButton, closeOnClickOutside } = this.props
     return (
-      <div data-test-id={testID} className='box-confirm animated fadeInDown'>
+      <div className='box-confirm animated fadeInDown'>
         <Modal
+          testID={testID}
           title={title}
           centered
           closeOnClickOutside={closeOnClickOutside}
@@ -61,6 +62,7 @@ class Confirm extends Component {
             {buttons.map((button, i) => (
               <Button
                 key={i}
+                testID={`${testID}-${i}`}
                 primary={button.primary}
                 onClick={() => this.handleClickButton(button)}
               >

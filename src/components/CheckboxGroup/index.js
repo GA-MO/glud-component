@@ -73,7 +73,7 @@ export default class CheckboxGroup extends Component {
 
   renderCheckbox = option => (
     <Checkbox
-      testID={option.testID}
+      testID={option.testID || option.name}
       name={option.name}
       key={option.value}
       label={option.label}

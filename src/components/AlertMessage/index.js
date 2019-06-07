@@ -11,7 +11,7 @@ class AlertMessage extends Component {
   }
 
   static defaultProps = {
-    testID: 'close-alert-message'
+    testID: 'alert-message'
   }
 
   componentDidMount = () => {
@@ -27,7 +27,7 @@ class AlertMessage extends Component {
       <div className={type}>
         <div className='box-alert-message animated fadeInDown'>
           <a
-            data-test-id={testID}
+            data-test-id={`${testID}-close-button`}
             href='javascript:;'
             onClick={() => closeAlertMessage()}
             className='close'
@@ -56,7 +56,7 @@ function openAlertMessage (properties) {
 }
 
 function closeAlertMessage () {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const target = document.getElementById('box-react-alert-message')
     if (!target) resolve()
 

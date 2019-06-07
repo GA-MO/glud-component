@@ -5,6 +5,7 @@ import Button from '../Button'
 
 export default class RadioButton extends PureComponent {
   static propTypes = {
+    testID: PropTypes.string,
     onlyContain: PropTypes.bool,
     fullwidth: PropTypes.bool,
     fullwidthEqualSized: PropTypes.bool,
@@ -16,6 +17,7 @@ export default class RadioButton extends PureComponent {
   }
 
   static defaultProps = {
+    testID: 'radio-button',
     inline: false,
     options: [],
     value: [],
@@ -52,10 +54,10 @@ export default class RadioButton extends PureComponent {
     this.props.onChange(value)
   }
 
-  renderRadio = option => (
+  renderRadio = (option, index) => (
     <Button
       key={option.value}
-      data-test-id={option.testID}
+      testID={`${this.props.testID}-${index}`}
       primary={this.isChecked(option.value)}
       disabled={option.disabled}
       onClick={() => this.handleButtonClick(option.value)}
@@ -66,7 +68,7 @@ export default class RadioButton extends PureComponent {
 
   renderRadioOptions = () => {
     const { options } = this.props
-    return options.map(option => this.renderRadio(option))
+    return options.map((option, index) => this.renderRadio(option, index))
   }
 
   render () {

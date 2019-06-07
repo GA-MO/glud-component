@@ -17,10 +17,7 @@ export default class InputDatePicker extends Component {
     message: PropTypes.string,
     disabled: PropTypes.bool,
     format: PropTypes.string,
-    value: PropTypes.oneOfType([
-      customTyeps.moment,
-      PropTypes.oneOf([ null ])
-    ]),
+    value: PropTypes.oneOfType([customTyeps.moment, PropTypes.oneOf([null])]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
@@ -46,13 +43,13 @@ export default class InputDatePicker extends Component {
     })
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     this.setState({
       dateValue: nextProps.value
     })
   }
 
-  handleInputFocus = (e) => {
+  handleInputFocus = e => {
     this.onShowDatePicker()
     this.props.onFocus(e)
     this.input.blur()
@@ -62,7 +59,7 @@ export default class InputDatePicker extends Component {
     this.onCloseDatePicker()
   }
 
-  handSelectDate = (dateValue) => {
+  handSelectDate = dateValue => {
     this.setState({
       dateValue
     })
@@ -71,13 +68,13 @@ export default class InputDatePicker extends Component {
   }
 
   onShowDatePicker = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       isShowCalendar: true
     }))
   }
 
   onCloseDatePicker = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       isShowCalendar: false
     }))
   }
@@ -103,7 +100,7 @@ export default class InputDatePicker extends Component {
       <Fragment>
         <Input
           data-test-id={testID}
-          ref={(input) => (this.input = input)}
+          ref={input => (this.input = input)}
           onlyContain={onlyContain}
           label={label}
           name={name}
@@ -118,7 +115,11 @@ export default class InputDatePicker extends Component {
         />
         {isShowCalendar && (
           <div className='box-datarange-wrapper show'>
-            <a className='delete' onClick={this.handleClickCloseDatePicker} />
+            <a
+              data-test-id={`${testID}-close-button`}
+              className='delete'
+              onClick={this.handleClickCloseDatePicker}
+            />
             <DateRangePicker
               numberOfCalendars={1}
               selectionType='single'

@@ -21,7 +21,7 @@ export default class TabItem extends PureComponent {
 
     return (
       <li
-        data-test-id={`${testID || `tab-item-${index}`}`}
+        data-test-id={`${testID}-${index}`}
         className={classes}
         onClick={() => onClick({ tab: index + 1, name: name })}
       >

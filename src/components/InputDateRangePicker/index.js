@@ -21,10 +21,7 @@ export default class InputDateRangePicker extends Component {
     message: PropTypes.string,
     disabled: PropTypes.bool,
     format: PropTypes.string,
-    value: PropTypes.oneOfType([
-      customTyeps.momentRange,
-      PropTypes.oneOf([ null ])
-    ]),
+    value: PropTypes.oneOfType([customTyeps.momentRange, PropTypes.oneOf([null])]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
@@ -50,13 +47,13 @@ export default class InputDateRangePicker extends Component {
     })
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     this.setState({
       dateRangeValue: nextProps.value
     })
   }
 
-  handleInputFocus = (e) => {
+  handleInputFocus = e => {
     this.onShowDatePicker()
     this.props.onFocus(e)
     this.input.blur()
@@ -66,7 +63,7 @@ export default class InputDateRangePicker extends Component {
     this.onCloseDatePicker()
   }
 
-  handSelectDate = (dateRangeValue) => {
+  handSelectDate = dateRangeValue => {
     this.setState({
       dateRangeValue
     })
@@ -75,13 +72,13 @@ export default class InputDateRangePicker extends Component {
   }
 
   onShowDatePicker = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       isShowCalendar: true
     }))
   }
 
   onCloseDatePicker = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       isShowCalendar: false
     }))
   }
@@ -105,15 +102,13 @@ export default class InputDateRangePicker extends Component {
 
     const startDate = get(dateRangeValue, 'start', null)
     const endDate = get(dateRangeValue, 'end', null)
-    const value = dateRangeValue
-      ? `${startDate.format(format)} - ${endDate.format(format)}`
-      : ''
+    const value = dateRangeValue ? `${startDate.format(format)} - ${endDate.format(format)}` : ''
 
     return (
       <Fragment>
         <Input
           data-test-id={testID}
-          ref={(input) => (this.input = input)}
+          ref={input => (this.input = input)}
           onlyContain={onlyContain}
           label={label}
           name={name}
@@ -128,7 +123,11 @@ export default class InputDateRangePicker extends Component {
         />
         {isShowCalendar && (
           <div className='box-datarange-wrapper show'>
-            <a className='delete' onClick={this.handleClickCloseDatePicker} />
+            <a
+              data-test-id={`${testID}-close-button`}
+              className='delete'
+              onClick={this.handleClickCloseDatePicker}
+            />
             <DateRangePicker
               numberOfCalendars={2}
               selectionType='range'

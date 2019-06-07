@@ -10,6 +10,7 @@ class Modal extends Component {
     title: PropTypes.string,
     centered: PropTypes.bool,
     open: PropTypes.bool,
+    fullscreen: PropTypes.bool,
     inline: PropTypes.bool,
     closeOnClickOutside: PropTypes.bool,
     onClose: PropTypes.func
@@ -26,6 +27,7 @@ class Modal extends Component {
       title,
       centered,
       open,
+      fullscreen,
       inline,
       closeOnClickOutside,
       onClose,
@@ -34,14 +36,15 @@ class Modal extends Component {
     const modalClass = classNames('', {
       modal: !inline,
       'is-active': open,
-      'is-centered': centered
+      'is-centered': centered,
+      fullscreen: fullscreen
     })
 
     return (
       <div className={modalClass}>
         {!inline && (
           <div
-            data-test-id={testID}
+            data-test-id={`${testID}-overlay`}
             className='modal-background'
             onClick={() => (closeOnClickOutside && onClose()) || null}
           />
@@ -50,7 +53,13 @@ class Modal extends Component {
           {title && (
             <header className='modal-card-head'>
               <p className='modal-card-title'>{title}</p>
-              {onClose && <button data-test-id={testID} className='delete' onClick={onClose} />}
+              {onClose && (
+                <button
+                  data-test-id={`${testID}-close-button`}
+                  className='delete'
+                  onClick={onClose}
+                />
+              )}
             </header>
           )}
           {children}
