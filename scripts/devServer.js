@@ -17,12 +17,12 @@ let isFirstCompile = true
 
 const compiler = webpack(webpackConfig)
 
-compiler.plugin('invalid', function() {
+compiler.plugin('invalid', function () {
   clearConsole()
   console.log(chalk.yellow('Compiling...'))
 })
 
-compiler.plugin('done', function(stats) {
+compiler.plugin('done', function (stats) {
   const messages = formatWebpackMessages(stats.toJson({}, true))
   const isSuccessful = !messages.errors.length && !messages.warnings.length
   const showInstructions = isSuccessful && isFirstCompile
@@ -42,9 +42,7 @@ compiler.plugin('done', function(stats) {
     console.log()
     console.log('   The project is running at:')
     console.log()
-    console.log(
-      '   ' + chalk.cyan.bold(protocol + '://' + host + ':' + port + '/')
-    )
+    console.log('   ' + chalk.cyan.bold(protocol + '://' + host + ':' + port + '/'))
     console.log()
     openBrowser(protocol + '://' + host + ':' + port + '/')
     isFirstCompile = false
