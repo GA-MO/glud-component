@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "",
   "repository": {
     "url": "",
@@ -78,13 +78,16 @@
     }
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.12",
     "bulma-tooltip": "^2.0.2",
     "classnames": "^2.2.5",
     "cleave.js": "^1.4.7",
     "moment-range": "^3.1.1",
     "react-daterange-picker": "^1.2.0",
     "react-powerplug": "^0.1.4",
-    "react-select": "^2.1.2"
+    "react-select": "^2.1.2",
+    "react-spring": "^8.0.24"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
@@ -121,9 +124,9 @@
     "node-sass": "^4.5.0",
     "promise-polyfill": "^7.1.2",
     "prop-types": "^15.6.0",
-    "react": "^16.6.3",
+    "react": "^16.8.6",
     "react-dev-utils": "^0.5.2",
-    "react-dom": "^16.6.3",
+    "react-dom": "^16.8.6",
     "react-helmet": "^5.0.3",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-redux": "^5.0.2",
