@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+
 import MobileModalFullscreen from '../MobileModalFullscreen'
 
 const iOSWebView = () => {
@@ -32,11 +33,15 @@ const Iframe = ({ title, show, src, onClose }) => {
       {showIframe && (
         <iframe
           id='appIframe'
+          style={{
+            width: 0,
+            height: 0,
+            minWidth: '100%',
+            minHeight: '100%'
+          }}
           name='appIframe'
           title='App iframe'
           src={src}
-          width='100%'
-          height='100%'
           frameBorder='0'
         />
       )}
