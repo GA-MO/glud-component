@@ -33,12 +33,8 @@ const Iframe = ({ title, show, src, onClose }) => {
       {showIframe && (
         <iframe
           id='appIframe'
-          style={{
-            width: 0,
-            height: 0,
-            minWidth: '100%',
-            minHeight: '100%'
-          }}
+          width='100%'
+          height='100%'
           name='appIframe'
           title='App iframe'
           src={src}

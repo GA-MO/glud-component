@@ -12,6 +12,7 @@ const MobileModalFullScreen = ({
   onClickLeft,
   onClose,
   wrap,
+  headerDisabled,
   overflowHidden,
   children
 }) => {
@@ -47,13 +48,15 @@ const MobileModalFullScreen = ({
             <animated.div key={key} style={props}>
               <Style wrap={wrap ? 1 : 0} overflowHidden={overflowHidden}>
                 <div className='modal-wrapper'>
-                  <AppHeader
-                    title={title}
-                    leftIcon={leftIcon}
-                    onClickLeft={onClickLeft}
-                    rightIcon='fas fa-times'
-                    onClickRight={onClose}
-                  />
+                  {!headerDisabled && (
+                    <AppHeader
+                      title={title}
+                      leftIcon={leftIcon}
+                      onClickLeft={onClickLeft}
+                      rightIcon='fas fa-times'
+                      onClickRight={onClose}
+                    />
+                  )}
                   <div className='wrap-content'>{children}</div>
                 </div>
               </Style>
@@ -71,6 +74,7 @@ MobileModalFullScreen.propTypes = {
   leftIcon: PropTypes.string,
   onClickLeft: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  headerDisabled: PropTypes.bool,
   overflowHidden: PropTypes.bool
 }
 
@@ -80,6 +84,7 @@ MobileModalFullScreen.defaultProps = {
   wrap: false,
   onClickLeft: () => null,
   onClose: () => null,
+  headerDisabled: false,
   overflowHidden: false
 }
 
