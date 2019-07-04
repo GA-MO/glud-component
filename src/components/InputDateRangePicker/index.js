@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import DateRangePicker from 'react-daterange-picker'
+import DateRangePicker from './react-daterange-picker'
 import get from 'lodash/get'
 import Input from '../Input'
 import Moment from 'moment'

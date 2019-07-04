@@ -2,13 +2,7 @@ import moment from 'moment'
 import 'moment-range'
 
 function isMomentRange (val) {
-  return (
-    val &&
-    val.start &&
-    val.end &&
-    moment.isMoment(val.start) &&
-    moment.isMoment(val.end)
-  )
+  return val && val.start && val.end && moment.isMoment(val.start) && moment.isMoment(val.end)
 }
 
 export default {

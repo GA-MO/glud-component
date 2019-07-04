@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import DateRangePicker from 'react-daterange-picker'
+import DateRangePicker from '../InputDateRangePicker/react-daterange-picker'
 import Input from '../Input'
 import moment from 'moment'
-import customTyeps from './customTyeps-util'
+import customTyeps from '../InputDateRangePicker/customTyeps-util'
 
 export default class InputDatePicker extends Component {
   static propTypes = {
