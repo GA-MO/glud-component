@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "",
   "repository": {
     "url": "",
@@ -83,8 +83,9 @@
     "bulma-tooltip": "^2.0.2",
     "classnames": "^2.2.5",
     "cleave.js": "^1.4.7",
+    "moment": "^2.24.0",
     "moment-range": "^3.1.1",
-    "react-daterange-picker": "^1.2.0",
+    "react-daterange-picker": "^2.0.1",
     "react-powerplug": "^0.1.4",
     "react-select": "^2.1.2",
     "react-spring": "^8.0.24"
