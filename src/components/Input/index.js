@@ -6,6 +6,7 @@ import Cleave from 'cleave.js'
 export default class Input extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     onlyContain: PropTypes.bool,
     type: PropTypes.string,
     label: PropTypes.string,
@@ -80,6 +81,7 @@ export default class Input extends PureComponent {
   render () {
     const {
       testID,
+      className,
       onlyContain,
       type,
       label,
@@ -118,11 +120,15 @@ export default class Input extends PureComponent {
 
     const classInput = classNames('input', status)
     const classHelp = classNames('help', status)
-    const classControl = classNames('control', {
-      'is-loading': loading,
-      'has-icons-left': iconLeft,
-      'has-icons-right': iconRight
-    })
+    const classControl = classNames(
+      'control',
+      {
+        'is-loading': loading,
+        'has-icons-left': iconLeft,
+        'has-icons-right': iconRight
+      },
+      className
+    )
 
     const inputField = (
       <input

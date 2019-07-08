@@ -26,9 +26,7 @@ export const getPagination = (totalRecord, viewPerPage = 20) => {
 }
 
 export const getDataByPage = (listData, pagination, currentPage) => {
-  const currentView = pagination.filter(
-    (item) => Number(currentPage) === item.pageNumber
-  )[0]
+  const currentView = pagination.filter(item => Number(currentPage) === item.pageNumber)[0]
   const result = []
   if (listData.length > 0) {
     for (let i = 1; i <= listData.length; i++) {
@@ -47,6 +45,7 @@ const getTotalRecord = (totalDataLength, totalRecord) => {
 
 export default class Table extends PureComponent {
   static propTypes = {
+    className: PropTypes.string,
     dataList: PropTypes.array,
     elementHead: PropTypes.func,
     elementBody: PropTypes.func,
@@ -80,7 +79,7 @@ export default class Table extends PureComponent {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       paginations: getPagination(
         getTotalRecord(nextProps.dataList.length, nextProps.totalRecord),
         nextProps.viewPerPage
@@ -89,13 +88,13 @@ export default class Table extends PureComponent {
     }))
   }
 
-  handleCurrentPage = (nextProps) => {
+  handleCurrentPage = nextProps => {
     if (nextProps.onChangePage && nextProps.dataList.length > 0) return false
     if (nextProps.dataList.length !== this.props.dataList.length) return true
     return false
   }
 
-  search = (dataFromSearch) => {
+  search = dataFromSearch => {
     this.setState((prevState, props) => {
       let total = props.totalRecord || props.dataList.length
       if (dataFromSearch) total = dataFromSearch.length
@@ -108,15 +107,13 @@ export default class Table extends PureComponent {
     })
   }
 
-  onChangePage = (page) => {
+  onChangePage = page => {
     this.setState(() => ({
       currentPage: page
     }))
 
     if (this.props.onChangePage) {
-      const currentView = this.state.paginations.filter(
-        (item) => Number(page) === item.pageNumber
-      )[0]
+      const currentView = this.state.paginations.filter(item => Number(page) === item.pageNumber)[0]
       this.props.onChangePage(currentView)
     }
   }
@@ -124,6 +121,7 @@ export default class Table extends PureComponent {
   render () {
     const { paginations, currentPage, dataFromSearch } = this.state
     const {
+      className,
       dataList,
       elementHead,
       elementBody,
@@ -137,18 +135,15 @@ export default class Table extends PureComponent {
 
     const datas = dataFromSearch || dataList
     const tableRows =
-      pagination && !onChangePage
-        ? getDataByPage(datas, paginations, currentPage)
-        : datas
+      pagination && !onChangePage ? getDataByPage(datas, paginations, currentPage) : datas
 
     const ttr = dataFromSearch ? dataFromSearch.length : totalRecord
 
     const isShowPaginationTop = pagination && /(top|both)/.test(pagination)
-    const isShowPaginationBottom =
-      pagination && /(bottom|both)/.test(pagination)
+    const isShowPaginationBottom = pagination && /(bottom|both)/.test(pagination)
 
     return (
-      <div>
+      <div className={className}>
         {fieldsForSearch && (
           <Row>
             <Column D={6}>
@@ -200,17 +195,12 @@ class PaginationGroup extends Component {
   static propTypes = {
     pagination: PropTypes.array,
     totalRecord: PropTypes.number,
-    currentPage: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+    currentPage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChangePage: PropTypes.func
   }
 
   render () {
-    const {
-      totalRecord,
-      currentPage,
-      pagination = [],
-      onChangePage
-    } = this.props
+    const { totalRecord, currentPage, pagination = [], onChangePage } = this.props
 
     return (
       <Row justified>
@@ -223,8 +213,8 @@ class PaginationGroup extends Component {
               inline
               onlyContain
               value={currentPage}
-              onChange={(e) => onChangePage(e.target.value)}
-              options={pagination.map((item) => ({
+              onChange={e => onChangePage(e.target.value)}
+              options={pagination.map(item => ({
                 label: item.pageNumber,
                 value: item.pageNumber
               }))}

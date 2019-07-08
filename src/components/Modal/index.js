@@ -7,6 +7,7 @@ import ModalFooter from './ModalFooter'
 class Modal extends Component {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     title: PropTypes.string,
     centered: PropTypes.bool,
     open: PropTypes.bool,
@@ -24,6 +25,7 @@ class Modal extends Component {
   render () {
     const {
       testID,
+      className,
       title,
       centered,
       open,
@@ -33,12 +35,16 @@ class Modal extends Component {
       onClose,
       children
     } = this.props
-    const modalClass = classNames('', {
-      modal: !inline,
-      'is-active': open,
-      'is-centered': centered,
-      fullscreen: fullscreen
-    })
+    const modalClass = classNames(
+      '',
+      {
+        modal: !inline,
+        'is-active': open,
+        'is-centered': centered,
+        fullscreen: fullscreen
+      },
+      className
+    )
 
     return (
       <div className={modalClass}>

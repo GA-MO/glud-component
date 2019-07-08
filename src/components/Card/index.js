@@ -8,10 +8,8 @@ import Footer from '../Card/Footer'
 
 class Card extends Component {
   static propTypes = {
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.node
-    ]),
+    className: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     withToggle: PropTypes.bool,
     open: PropTypes.bool
   }
@@ -27,17 +25,15 @@ class Card extends Component {
     })
 
   render () {
-    const { title, withToggle, open, children } = this.props
+    const { className, title, withToggle, open, children } = this.props
 
     if (withToggle) {
       return (
         <Toggle initial={open}>
           {({ on, toggle }) => (
-            <div className='card'>
+            <div className={`card ${className}`}>
               <header className='card-header'>
-                <div className='card-header-title'>
-                  {title}
-                </div>
+                <div className='card-header-title'>{title}</div>
                 <a
                   href='javascript:;'
                   className='card-header-icon has-text-grey-dark'
@@ -45,10 +41,7 @@ class Card extends Component {
                   onClick={toggle}
                 >
                   <span className='icon'>
-                    <i
-                      className={this.renderIconClass(on)}
-                      aria-hidden='true'
-                    />
+                    <i className={this.renderIconClass(on)} aria-hidden='true' />
                   </span>
                 </a>
               </header>
@@ -62,9 +55,7 @@ class Card extends Component {
     return (
       <div className='card'>
         <header className='card-header'>
-          <div className='card-header-title'>
-            {title}
-          </div>
+          <div className='card-header-title'>{title}</div>
         </header>
         {children}
       </div>

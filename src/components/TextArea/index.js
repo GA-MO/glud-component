@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class TextArea extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     defaultValue: PropTypes.string,
@@ -34,6 +35,7 @@ export default class TextArea extends PureComponent {
   render () {
     const {
       testID,
+      className,
       onlyContain,
       label,
       defaultValue,
@@ -92,7 +94,7 @@ export default class TextArea extends PureComponent {
     }
 
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         <label className='label'>
           {label} {isRequired && <i className='required fas fa-asterisk' />}
         </label>

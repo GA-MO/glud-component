@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 export default class ButtonGroup extends React.PureComponent {
   static propTypes = {
+    className: PropTypes.string,
     hasAddons: PropTypes.bool,
     centered: PropTypes.bool,
     right: PropTypes.bool,
@@ -12,14 +13,23 @@ export default class ButtonGroup extends React.PureComponent {
   }
 
   render () {
-    const { hasAddons, centered, right, fullwidth, fullwidthEqualSized, children } = this.props
+    const {
+      className,
+      hasAddons,
+      centered,
+      right,
+      fullwidth,
+      fullwidthEqualSized,
+      children
+    } = this.props
 
     const classes = classNames('buttons', {
       'has-addons': hasAddons,
       'is-centered': centered,
       'is-right': right,
       fullwidth: fullwidth || fullwidthEqualSized,
-      equal: fullwidthEqualSized
+      equal: fullwidthEqualSized,
+      className
     })
 
     return <div className={classes}>{children}</div>

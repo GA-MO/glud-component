@@ -4,14 +4,15 @@ import { render } from 'react-dom'
 
 class Loading extends Component {
   static propTypes = {
+    className: PropTypes.string,
     label: PropTypes.string,
     component: PropTypes.node
   }
 
   render () {
-    const { label, component } = this.props
+    const { className, label, component } = this.props
     return (
-      <div className='box-loading open'>
+      <div className={`box-loading open ${className}`}>
         <div className='loading'>
           <div>{label}</div>
           <br />

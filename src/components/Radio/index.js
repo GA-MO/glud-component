@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 export default class Radio extends Component {
   static propTypes = {
+    className: PropTypes.string,
     labelGroup: PropTypes.string,
     name: PropTypes.string.isRequired,
     isRequired: PropTypes.bool,
@@ -81,10 +82,10 @@ export default class Radio extends Component {
   }
 
   render () {
-    const { labelGroup, isRequired } = this.props
+    const { className, labelGroup, isRequired } = this.props
 
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         {labelGroup && (
           <label className='label'>
             {labelGroup} {isRequired && <i className='required fas fa-asterisk' />}

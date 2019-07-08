@@ -1,7 +1,6 @@
 .list-view-item {
   position: relative;
   padding: 16px 20px;
-  padding-right: 60px;
   border-bottom: 1px solid #f1f1f1;
   background: #fff;
   color: #4a4a4a;
@@ -9,6 +8,10 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+
+  &.has-arrow {
+    padding-right: 60px;
+  }
 
   .logo {
     margin-right: 16px;

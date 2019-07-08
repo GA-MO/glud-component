@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class Checkbox extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string, PropTypes.number]).isRequired,
@@ -44,10 +45,14 @@ export default class Checkbox extends PureComponent {
 
   render () {
     const { isChecked } = this.state
-    const { testID, name, label, value, disabled } = this.props
-    const classes = classNames('is-checkradio is-primary', {
-      'has-background-color': isChecked
-    })
+    const { testID, className, name, label, value, disabled } = this.props
+    const classes = classNames(
+      'is-checkradio is-primary',
+      {
+        'has-background-color': isChecked
+      },
+      className
+    )
 
     return (
       <span>

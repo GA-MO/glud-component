@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 export default class Switch extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     onlyContain: PropTypes.bool,
     label: PropTypes.string,
     checked: PropTypes.bool,
@@ -34,7 +35,7 @@ export default class Switch extends PureComponent {
 
   render () {
     const { isChecked } = this.state
-    const { testID, label, onlyContain, disabled } = this.props
+    const { testID, className, label, onlyContain, disabled } = this.props
 
     const switchItem = (
       <div className='switch'>
@@ -54,7 +55,7 @@ export default class Switch extends PureComponent {
     if (onlyContain) return switchItem
 
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         {label && <label className='label'>{label}</label>}
         {switchItem}
       </div>

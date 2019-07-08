@@ -1,4 +1,8 @@
 .box {
+  &.has-clicked {
+    cursor: pointer;
+  }
+
   &.only-contain {
     box-shadow: none;
   }

@@ -4,6 +4,7 @@ import Checkbox from '../Checkbox'
 
 export default class CheckboxGroup extends Component {
   static propTypes = {
+    className: PropTypes.string,
     labelGroup: PropTypes.string,
     isRequired: PropTypes.bool,
     inline: PropTypes.bool,
@@ -97,9 +98,9 @@ export default class CheckboxGroup extends Component {
   }
 
   render () {
-    const { labelGroup, isRequired } = this.props
+    const { className, labelGroup, isRequired } = this.props
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         {labelGroup && (
           <label className='label'>
             {labelGroup} {isRequired && <i className='required fas fa-asterisk' />}

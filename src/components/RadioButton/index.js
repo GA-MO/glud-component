@@ -6,6 +6,7 @@ import Button from '../Button'
 export default class RadioButton extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     onlyContain: PropTypes.bool,
     fullwidth: PropTypes.bool,
     fullwidthEqualSized: PropTypes.bool,
@@ -72,14 +73,21 @@ export default class RadioButton extends PureComponent {
   }
 
   render () {
-    const { onlyContain, labelGroup, isRequired, fullwidth, fullwidthEqualSized } = this.props
+    const {
+      className,
+      onlyContain,
+      labelGroup,
+      isRequired,
+      fullwidth,
+      fullwidthEqualSized
+    } = this.props
 
     if (onlyContain) {
       return <ButtonGroup hasAddons>{this.renderRadioOptions()}</ButtonGroup>
     }
 
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         {labelGroup && (
           <label className='label'>
             {labelGroup} {isRequired && <i className='required fas fa-asterisk' />}

@@ -7,6 +7,7 @@ import classNames from 'classnames'
 export default class SelectWithFilter extends Component {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     onlyContain: PropTypes.bool,
     inline: PropTypes.bool,
     name: PropTypes.string,
@@ -44,6 +45,7 @@ export default class SelectWithFilter extends Component {
   render () {
     const {
       testID,
+      className,
       onlyContain,
       inline,
       name,
@@ -114,7 +116,7 @@ export default class SelectWithFilter extends Component {
     }
 
     return (
-      <div className='field'>
+      <div className={`field ${className}`}>
         <label className='label'>
           {label} {isRequired && <i className='required fas fa-asterisk' />}
         </label>

@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class Button extends React.PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     title: PropTypes.string,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
@@ -33,6 +34,7 @@ export default class Button extends React.PureComponent {
   render () {
     const {
       testID,
+      className,
       title,
       primary,
       secondary,
@@ -55,23 +57,27 @@ export default class Button extends React.PureComponent {
       children
     } = this.props
 
-    const classes = classNames('button', {
-      tooltip: tooltip,
-      'is-tooltip-multiline': tooltipMultiline,
-      'is-tooltip-right': tooltipRight,
-      'is-tooltip-left': tooltipLeft,
-      'is-tooltip-bottom': tooltipBottom,
-      'is-primary': primary,
-      'is-dark': secondary,
-      'is-static': isStatic,
-      'is-large': large,
-      'is-medium': medium,
-      'is-outlined': outlined,
-      'is-small': small,
-      'is-active': active,
-      'is-loading': loading,
-      'is-fullwidth': fullwidth
-    })
+    const classes = classNames(
+      'button',
+      {
+        tooltip: tooltip,
+        'is-tooltip-multiline': tooltipMultiline,
+        'is-tooltip-right': tooltipRight,
+        'is-tooltip-left': tooltipLeft,
+        'is-tooltip-bottom': tooltipBottom,
+        'is-primary': primary,
+        'is-dark': secondary,
+        'is-static': isStatic,
+        'is-large': large,
+        'is-medium': medium,
+        'is-outlined': outlined,
+        'is-small': small,
+        'is-active': active,
+        'is-loading': loading,
+        'is-fullwidth': fullwidth
+      },
+      className
+    )
 
     return (
       <button

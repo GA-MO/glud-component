@@ -7,6 +7,7 @@ import TabItem from './TabItem'
 class Tab extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     defaultActive: PropTypes.number,
     centered: PropTypes.bool,
     right: PropTypes.bool,
@@ -43,7 +44,15 @@ class Tab extends PureComponent {
 
   render () {
     const { tabActive } = this.state
-    const { testID, centered, right, fullwidth, fullwidthEqualSized, children } = this.props
+    const {
+      testID,
+      className,
+      centered,
+      right,
+      fullwidth,
+      fullwidthEqualSized,
+      children
+    } = this.props
 
     const classes = classNames('tabs', {
       'is-centered': centered,
@@ -52,7 +61,7 @@ class Tab extends PureComponent {
       equal: fullwidthEqualSized
     })
     return (
-      <div className='box-tab'>
+      <div className={`box-tab ${className}`}>
         <div className={classes}>
           <ul>
             {React.Children.map(children, (child, index) => (

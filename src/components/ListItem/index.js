@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class ListItem extends PureComponent {
   static propTypes = {
     testID: PropTypes.string,
+    className: PropTypes.string,
     label: PropTypes.string,
     desc: PropTypes.string,
     icon: PropTypes.string,
@@ -24,18 +25,18 @@ export default class ListItem extends PureComponent {
   }
 
   render () {
-    const { testID, label, desc, icon, arrow, children } = this.props
+    const { testID, className, label, desc, icon, arrow, children } = this.props
 
-    const menuClass = classNames('list-view-item', {
-      'has-arrow': arrow
-    })
+    const menuClass = classNames(
+      'list-view-item',
+      {
+        'has-arrow': arrow
+      },
+      className
+    )
 
     return (
-      <div
-        data-test-id={testID}
-        className={menuClass}
-        onClick={this.handleClickMenu}
-      >
+      <div data-test-id={testID} className={menuClass} onClick={this.handleClickMenu}>
         {icon && (
           <div className='logo'>
             <img src={icon} />
