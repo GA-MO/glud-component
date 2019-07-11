@@ -17,6 +17,7 @@ export default class Input extends PureComponent {
      * Using Cleave.js https://github.com/nosir/cleave.js/blob/master/doc/options.md
      */
     formatOptions: PropTypes.shape({}),
+    autoComplete: PropTypes.string,
     maxLength: PropTypes.number,
     isRequired: PropTypes.bool,
     isSuccess: PropTypes.bool,
@@ -42,6 +43,7 @@ export default class Input extends PureComponent {
   static defaultProps = {
     testID: 'input',
     type: 'text',
+    autoComplete: 'off',
     onChange: () => null,
     onFocus: () => null,
     onBlur: () => null,
@@ -88,6 +90,7 @@ export default class Input extends PureComponent {
       name,
       defaultValue,
       value,
+      autoComplete,
       maxLength,
       isRequired,
       isSuccess,
@@ -149,6 +152,7 @@ export default class Input extends PureComponent {
         onKeyPress={onKeyPress}
         disabled={disabled}
         readOnly={readOnly}
+        autoComplete={autoComplete}
       />
     )
 
