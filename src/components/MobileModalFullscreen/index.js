@@ -5,7 +5,7 @@ import { useTransition, animated } from 'react-spring'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-const MobileModalFullScreen = ({
+const MobileModalFullscreen = ({
   title,
   show,
   leftIcon,
@@ -67,7 +67,7 @@ const MobileModalFullScreen = ({
   )
 }
 
-MobileModalFullScreen.propTypes = {
+MobileModalFullscreen.propTypes = {
   title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   wrap: PropTypes.bool.isRequired,
@@ -78,7 +78,7 @@ MobileModalFullScreen.propTypes = {
   overflowHidden: PropTypes.bool
 }
 
-MobileModalFullScreen.defaultProps = {
+MobileModalFullscreen.defaultProps = {
   title: 'Modal Title',
   show: false,
   wrap: false,
@@ -88,7 +88,7 @@ MobileModalFullScreen.defaultProps = {
   overflowHidden: false
 }
 
-export default MobileModalFullScreen
+export default MobileModalFullscreen
 
 const btnCloseWithLabel = css`
   .nav-right {
@@ -111,7 +111,7 @@ const btnCloseWithLabel = css`
 `
 
 const Style = styled.div`
-  label: MobileModalFullScreen;
+  label: MobileModalFullscreen;
 
   .modal-wrapper {
     width: ${props => (props.wrap ? '400px' : '100%')};
