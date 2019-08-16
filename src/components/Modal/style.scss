@@ -22,7 +22,7 @@ section.modal-card-body:last-child {
   &.is-centered {
     text-align: center;
 
-    > .modal-card-foot {
+    > .modal-card > .modal-card-foot {
       justify-content: center;
     }
   }
