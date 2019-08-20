@@ -1,0 +1,8 @@
+.box-field {
+  .is-checkradio[type='radio'] + label {
+    display: block;
+    padding: 0;
+    padding-left: 2rem;
+    margin: 0;
+  }
+}
