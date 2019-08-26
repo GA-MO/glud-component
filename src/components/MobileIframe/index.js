@@ -7,7 +7,14 @@ function createElemet (properties) {
   divTarget.id = 'box-iframe'
   document.body.appendChild(divTarget)
 
-  render(<Iframe show title={properties.title} src={properties.src} onClose={close} />, divTarget)
+  function onClose () {
+    if (properties.onClose) {
+      properties.onClose()
+    }
+    close()
+  }
+
+  render(<Iframe show title={properties.title} src={properties.src} onClose={onClose} />, divTarget)
 }
 
 function open (properties) {
