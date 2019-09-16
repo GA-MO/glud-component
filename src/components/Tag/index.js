@@ -15,6 +15,7 @@ export default class Tag extends React.PureComponent {
     info: PropTypes.bool,
     rounded: PropTypes.bool,
     isDelete: PropTypes.bool,
+    fullwidth: PropTypes.bool,
     onClick: PropTypes.func
   }
 
@@ -35,6 +36,7 @@ export default class Tag extends React.PureComponent {
       info,
       rounded,
       isDelete,
+      fullwidth,
       onClick,
       children
     } = this.props
@@ -49,7 +51,8 @@ export default class Tag extends React.PureComponent {
       'is-success': success,
       'is-warning': warning,
       'is-rounded': rounded,
-      'is-delete': isDelete
+      'is-delete': isDelete,
+      'is-fullwidth': fullwidth
     })
 
     return (

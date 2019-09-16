@@ -16,3 +16,11 @@
   <Tag medium dark>Medium</Tag>
   <Tag success>Normal</Tag>
 ```
+
+### Fullwidth
+
+```jsx
+<Tag fullwidth danger>
+  Danger
+</Tag>
+```
