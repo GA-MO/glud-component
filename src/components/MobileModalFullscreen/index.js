@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppHeader from '../AppHeader'
 import { useTransition, animated } from 'react-spring'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+import useModalOpenInMobileLayout from '../useModalOpenInMobileLayout'
 
 const MobileModalFullscreen = ({
   title,
@@ -40,8 +41,13 @@ const MobileModalFullscreen = ({
     config: { mass: 1, tension: 2000, friction: 70 }
   })
 
+  const modalRef = useRef(null)
+
+  useModalOpenInMobileLayout(modalRef, show)
+
   return (
     <Fragment>
+      <div ref={modalRef} />
       {transitions.map(
         ({ item, key, props }) =>
           item && (
