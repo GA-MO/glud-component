@@ -47,7 +47,7 @@ module.exports = {
       components: 'src/components/style.js'
     }
   ],
-  getComponentPathLine (componentPath) {
+  getComponentPathLine(componentPath) {
     const dir = path.dirname(componentPath)
     const arrDir = dir.split('/')
     const componentName = arrDir[arrDir.length - 1]
@@ -55,5 +55,8 @@ module.exports = {
 
     return `import { ${componentName} } from '${packageInfo.name}'`
   },
-  webpackConfig: require('./configs/webpack.config.dev.js')
+  webpackConfig: require('./configs/webpack.config.dev.js'),
+  require: [
+    'babel-polyfill'
+  ]
 }

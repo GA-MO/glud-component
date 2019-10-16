@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppHeader from '../AppHeader'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring/web.cjs'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import useModalOpenInMobileLayout from '../useModalOpenInMobileLayout'
