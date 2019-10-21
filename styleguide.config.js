@@ -41,7 +41,7 @@ module.exports = {
     },
     {
       name: 'UI Components',
-      components: 'src/components/**/index.js'
+      components: 'src/components/*/index.js'
     },
     {
       components: 'src/components/style.js'
