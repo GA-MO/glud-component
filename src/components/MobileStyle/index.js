@@ -14,7 +14,7 @@ const globalStyles = css`
     display: flex;
     flex-direction: column;
   }
-  #app {
+  #app, #root {
     flex-grow: 1;
     flex-direction: column;
     display: flex;
