@@ -19,6 +19,7 @@ export default class Button extends React.PureComponent {
     outlined: PropTypes.bool,
     disabled: PropTypes.bool,
     icon: PropTypes.string,
+    rightIcon: PropTypes.string,
     tooltip: PropTypes.string,
     tooltipMultiline: PropTypes.bool,
     tooltipLeft: PropTypes.bool,
@@ -31,7 +32,7 @@ export default class Button extends React.PureComponent {
     testID: 'button'
   }
 
-  render () {
+  render() {
     const {
       testID,
       className,
@@ -48,6 +49,7 @@ export default class Button extends React.PureComponent {
       outlined,
       disabled,
       icon,
+      rightIcon,
       tooltip,
       tooltipMultiline,
       tooltipLeft,
@@ -89,14 +91,15 @@ export default class Button extends React.PureComponent {
         title={title}
       >
         {icon ? <Icon icon={icon} /> : null}
-        {icon && children ? <span>{children}</span> : children}
+        {(icon || rightIcon) && children ? <span>{children}</span> : children}
+        {rightIcon ? <Icon icon={rightIcon} /> : null}
       </button>
     )
   }
 }
 
 class Icon extends React.PureComponent {
-  render () {
+  render() {
     const { icon } = this.props
     return (
       <span className='icon'>
