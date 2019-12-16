@@ -12,6 +12,7 @@ class Modal extends Component {
     centered: PropTypes.bool,
     open: PropTypes.bool,
     fullscreen: PropTypes.bool,
+    maxWidth: PropTypes.number,
     inline: PropTypes.bool,
     closeOnClickOutside: PropTypes.bool,
     onClose: PropTypes.func
@@ -20,6 +21,17 @@ class Modal extends Component {
   static defaultProps = {
     testID: 'modal',
     closeOnClickOutside: true
+  }
+
+  getModalCardStyle = () => {
+    const { maxWidth } = this.props
+    const modalCardStyles = {
+      maxWidth: `${maxWidth}px`,
+      width: '100%'
+    }
+
+    if (maxWidth) return modalCardStyles
+    return {}
   }
 
   render () {
@@ -35,6 +47,7 @@ class Modal extends Component {
       onClose,
       children
     } = this.props
+
     const modalClass = classNames(
       '',
       {
@@ -55,7 +68,7 @@ class Modal extends Component {
             onClick={() => (closeOnClickOutside && onClose()) || null}
           />
         )}
-        <div className='modal-card'>
+        <div className='modal-card' style={this.getModalCardStyle()}>
           {title && (
             <header className='modal-card-head'>
               <p className='modal-card-title'>{title}</p>
