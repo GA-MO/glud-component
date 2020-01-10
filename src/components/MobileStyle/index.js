@@ -8,13 +8,14 @@ const globalStyles = css`
   }
   body {
     background: #f5f5f5;
-    height: calc(${window.innerHeight * 0.01}px * 100);
     overflow-y: hidden;
     color: #4a4a4a;
     display: flex;
     flex-direction: column;
   }
-  #app, #root {
+  #app,
+  #root {
+    height: calc(${window.innerHeight * 0.01}px * 100);
     flex-grow: 1;
     flex-direction: column;
     display: flex;
