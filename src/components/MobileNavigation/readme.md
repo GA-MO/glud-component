@@ -1,6 +1,7 @@
 Required `<MobileStyle />` for mobile webview
 
 ```jsx
+const { useEffect, useState } = require('react')
 const { NavigationContainer, Stack } = require('../MobileNavigation');
 
 const Home = ({ navigation }) => {
@@ -93,6 +94,8 @@ import { Stack } from 'glud-component/lib/MobileNavigation';
   options={{
     title: 'Overview',
     subTitle: '',
+    rightIcon: 'fas fa-trash',
+    rightAction: () => {},
     headerDisabled: false,
     headerRenderer: (options) => <HeaderComponent {...options} />
   }}
