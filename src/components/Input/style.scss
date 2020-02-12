@@ -5,3 +5,18 @@
   vertical-align: text-top;
   color: #ff3860;
 }
+
+.row {
+  [class^="D-"], [class^="T-"], [class^="M-"], [class^="SM-"], [class^="XSM-"] {
+    > .field {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+.field.has-addons .control:first-child .control:last-child {
+  .button, .input, .select select {
+    border-bottom-left-radius: 3px !important;
+    border-top-left-radius: 3px !important;
+  }
+}
