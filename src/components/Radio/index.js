@@ -11,6 +11,15 @@ export default class Radio extends Component {
     inline: PropTypes.bool,
     options: PropTypes.array.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    /**
+     * Only work with onlyContain
+     */
+    disabled: PropTypes.bool,
+    /**
+     * Only work with onlyContain
+     */
+    checked: PropTypes.bool,
+    onlyContain: PropTypes.bool,
     onChange: PropTypes.func
   }
 
@@ -44,30 +53,48 @@ export default class Radio extends Component {
   }
 
   isChecked = optionValue => {
+    if (this.props.onlyContain) {
+      if (this.props.checked) return true
+      return false
+    }
+
     const sValue = this.state.value
     const value = this.props.value
     const currentValue = sValue !== '' ? sValue : value
     return currentValue === optionValue
   }
 
-  renderRadio = (option, index) => (
-    <span key={option.value}>
-      <input
-        type='radio'
-        className='is-checkradio is-primary'
-        name={this.props.name}
-        checked={this.isChecked(option.value)}
-        readOnly='readOnly'
-        disabled={option.disabled}
-      />
-      <label
-        data-test-id={`${this.props.name}-${index}`}
-        onClick={() => (option.disabled ? null : this.handleRadioClick(option.value))}
-      >
-        {option.label}
-      </label>
-    </span>
-  )
+  renderRadio = (option = {}, index = 0) => {
+    const { label = '', value = '' } = option
+    const { onlyContain, disabled } = this.props
+    const isDisabled = () => {
+      if (onlyContain) {
+        if (disabled) return true
+        return false
+      }
+
+      return option.disabled
+    }
+
+    return (
+      <span key={!onlyContain && value}>
+        <input
+          type='radio'
+          className={`is-checkradio is-primary ${onlyContain && 'only-contain'}`}
+          name={this.props.name}
+          checked={this.isChecked(value)}
+          readOnly='readOnly'
+          disabled={isDisabled()}
+        />
+        <label
+          data-test-id={`${this.props.name}-${index}`}
+          onClick={() => (isDisabled() ? null : this.handleRadioClick(value))}
+        >
+          {!onlyContain && label}
+        </label>
+      </span>
+    )
+  }
 
   renderRadioOptions = () => {
     const { inline, options } = this.props
@@ -82,7 +109,9 @@ export default class Radio extends Component {
   }
 
   render () {
-    const { className, labelGroup, isRequired } = this.props
+    const { className, onlyContain, labelGroup, isRequired } = this.props
+
+    if (onlyContain) return this.renderRadio()
 
     return (
       <div className={`field ${className}`}>

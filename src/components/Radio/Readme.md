@@ -19,6 +19,11 @@
   />
 ```
 
+### Use Only Contain
+```jsx
+    <Radio onlyContain checked />
+```
+
 ### Inline
 
 ```jsx

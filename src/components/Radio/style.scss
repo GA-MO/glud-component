@@ -1,8 +1,16 @@
 .box-field {
-  .is-checkradio[type='radio'] + label {
+  .is-checkradio[type=radio] + label {
     display: block;
     padding: 0;
     padding-left: 2rem;
     margin: 0;
+  }
+}
+
+.is-checkradio[type=radio] {
+  &.only-contain + label {
+    padding-left: 1.5rem;
+    padding-right: 0;
+    margin-right: 0;
   }
 }

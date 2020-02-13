@@ -11,6 +11,7 @@ export default class Checkbox extends PureComponent {
     value: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string, PropTypes.number]).isRequired,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    onlyContain: PropTypes.bool,
     /**
      * Return (isChecked, value)
      */
@@ -45,10 +46,11 @@ export default class Checkbox extends PureComponent {
 
   render () {
     const { isChecked } = this.state
-    const { testID, className, name, label, value, disabled } = this.props
+    const { testID, className, onlyContain, name, label, value, disabled } = this.props
     const classes = classNames(
       'is-checkradio is-primary',
       {
+        'only-contain': onlyContain,
         'has-background-color': isChecked
       },
       className
@@ -66,7 +68,7 @@ export default class Checkbox extends PureComponent {
           readOnly='readOnly'
           disabled={disabled}
         />
-        <label onClick={disabled ? null : this.handleCheckboxChange}>{label}</label>
+        <label onClick={disabled ? null : this.handleCheckboxChange}>{!onlyContain && label}</label>
       </span>
     )
   }
