@@ -57,6 +57,9 @@ $colorDefault: #3273dc;
   .react-select__menu {
     z-index: 99;
   }
+  .react-select__placeholder {
+    color: rgba($input-color, 0.3);
+  }
   .react-select__single-value + div,
   .react-select__placeholder + div,
   .react-select__value-container > div {

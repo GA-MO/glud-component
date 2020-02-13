@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactSelect from 'react-select'
+import AsyncSelect from 'react-select/lib/Async'
 import style from './style'
 import classNames from 'classnames'
 
@@ -9,6 +10,7 @@ export default class SelectWithFilter extends Component {
     testID: PropTypes.string,
     className: PropTypes.string,
     onlyContain: PropTypes.bool,
+    async: PropTypes.bool,
     inline: PropTypes.bool,
     name: PropTypes.string,
     label: PropTypes.string,
@@ -47,6 +49,7 @@ export default class SelectWithFilter extends Component {
       testID,
       className,
       onlyContain,
+      async,
       inline,
       name,
       label,
@@ -82,9 +85,11 @@ export default class SelectWithFilter extends Component {
       'has-icons-left': iconLeft
     })
 
+    const SelectComponent = async ? AsyncSelect : ReactSelect
+
     const inputField = (
       <div className={classSelect} data-test-id={testID}>
-        <ReactSelect
+        <SelectComponent
           classNamePrefix='react-select'
           name={name}
           onChange={onChange}

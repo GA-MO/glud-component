@@ -1,7 +1,36 @@
 This component base on [React Select](https://react-select.com/home) you can use props and features of React Select.
 
 ```jsx
-<SelectWithFilter label='Firstname' placeholder='Text input' message='This field invalid' />
+<SelectWithFilter label='Firstname' placeholder='Text input' />
+```
+
+### Async
+Use the Async component to load options from a remote source as the user types [see more options](https://react-select.com/async)
+```jsx
+const loadOptions = (inputValue, callback) => {
+  console.log('inputValue', inputValue)
+  setTimeout(() => {
+    const options = [
+      {
+        label: 'Animal',
+        value: 'Animal'
+      },
+      {
+        label: 'People',
+        value: 'People'
+      }
+    ]
+    callback(options)
+  }, 1000)
+};
+
+<SelectWithFilter
+  async
+  iconLeft={() => <i className='fas fa-search' />}
+  label='Search'
+  placeholder='Search something..'
+  loadOptions={loadOptions}
+/>
 ```
 
 ### Multiple
