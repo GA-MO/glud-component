@@ -178,9 +178,12 @@ export default class Input extends PureComponent {
 
     return (
       <div className='field'>
-        <label className='label'>
-          {label} {isRequired && <i className='required fas fa-asterisk' />}
-        </label>
+        {label && (
+          <label className='label'>
+            {label} {isRequired && <i className='required fas fa-asterisk' />}
+          </label>
+        )}
+
         <div className={classControl}>
           {inputField}
           {iconL}

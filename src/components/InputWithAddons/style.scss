@@ -2,4 +2,19 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+
+  &.has-label-and-message {
+    align-items: flex-start;
+
+    .control .button {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.field.has-addons .control:first-of-type .control:first-of-type {
+  .button, .input, .select select {
+    border-bottom-left-radius: 3px!important;
+    border-top-left-radius: 3px!important;
+  }
 }

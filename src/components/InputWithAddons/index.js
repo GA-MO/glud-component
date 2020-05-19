@@ -7,12 +7,14 @@ class InputWithAddons extends Component {
   static propTypes = {
     centered: PropTypes.bool,
     right: PropTypes.bool,
+    hasLabelAndMessage: PropTypes.bool,
     className: PropTypes.string
   }
 
   render () {
-    const { className, centered, right } = this.props
+    const { className, centered, right, hasLabelAndMessage } = this.props
     const classes = classNames('field has-addons', {
+      'has-label-and-message': hasLabelAndMessage,
       'has-addons-centered': centered,
       'has-addons-right': right
     }, className)
