@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.10.10",
+  "version": "1.11.1",
   "description": "",
   "repository": {
     "url": "",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "better-npm-run dev",
-    "deploy": "cp now.json styleguide/ && now ./styleguide && now alias",
+    "deploy": "now --prod",
     "build:lib": "better-npm-run clean:lib && babel src/components --out-dir lib",
     "build": "npm run clean && better-npm-run build",
     "build:client": "npm run clean && better-npm-run build:client",
