@@ -99,7 +99,7 @@ export default class InputDatePicker extends Component {
     return (
       <Fragment>
         <Input
-          data-test-id={testID}
+          testID={testID}
           ref={input => (this.input = input)}
           onlyContain={onlyContain}
           label={label}
