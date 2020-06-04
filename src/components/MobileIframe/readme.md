@@ -1,5 +1,6 @@
 ```js static
 MobileIframe.open({
+  testID: 'modal-iframe',
   title: 'Title',
   src: 'https://en.wikipedia.org'
 });
@@ -8,6 +9,7 @@ MobileIframe.open({
 ```jsx
 handleClick = () => {
   MobileIframe.open({
+    testID: 'modal-iframe',
     title: 'Title',
     src: 'https://en.wikipedia.org'
   });

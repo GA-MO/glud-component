@@ -7,7 +7,7 @@ const iOSWebView = () => {
   return navigator.userAgent.match(/SpaceX_iOS/i)
 }
 
-const Iframe = ({ title, show, src, onClose }) => {
+const Iframe = ({ testID, title, show, src, onClose }) => {
   const [isShow, setIsShow] = useState(show)
   const [showIframe, setShowIframe] = useState(false)
 
@@ -25,6 +25,7 @@ const Iframe = ({ title, show, src, onClose }) => {
 
   return (
     <MobileModalFullscreen
+      testID={testID}
       show={isShow}
       title={title}
       onClose={handleClickClose}
@@ -46,6 +47,7 @@ const Iframe = ({ title, show, src, onClose }) => {
 }
 
 Iframe.propTypes = {
+  testID: PropTypes.string,
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
@@ -53,6 +55,7 @@ Iframe.propTypes = {
 }
 
 Iframe.defaultProps = {
+  testID: 'modal-iframe',
   title: 'Iframe Title',
   src: 'https://en.wikipedia.org',
   show: false,

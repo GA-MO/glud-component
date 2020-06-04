@@ -28,7 +28,6 @@ class AlertMessage extends Component {
         <div className='box-alert-message animated fadeInDown'>
           <a
             data-test-id={`${testID}-close-button`}
-            href='javascript:;'
             onClick={() => closeAlertMessage()}
             className='close'
           >

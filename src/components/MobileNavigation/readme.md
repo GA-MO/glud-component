@@ -94,8 +94,12 @@ import { Stack } from 'glud-component/lib/MobileNavigation';
   options={{
     title: 'Overview',
     subTitle: '',
-    rightIcon: 'fas fa-trash',
-    rightAction: () => {},
+    rightActions: [
+      {
+        icon: 'fas fa-trash',
+        onClick: () => {},
+      }
+    ],
     headerDisabled: false,
     headerRenderer: (options) => <HeaderComponent {...options} />
   }}

@@ -145,7 +145,7 @@ const Navigator = props => {
         position: 'absolute',
         display: 'flex',
         flexDirection: 'column',
-        zIndex: 10,
+        zIndex: 1,
         top: 0,
         bottom: 0,
         left: 0,

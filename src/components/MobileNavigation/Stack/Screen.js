@@ -6,7 +6,7 @@ import AppHeader from '../../AppHeader'
 const Screen = props => {
   const { name, isMain, navigation, component, options } = props
   const [screenOptions, setScreenOption] = useState(options)
-  const { headerDisabled, title, subTitle, rightIcon, rightAction, headerRenderer } = screenOptions
+  const { headerDisabled, title, subTitle, titleLeft, rightActions, headerRenderer } = screenOptions
   const handleSetScreenOption = newOptions => {
     setScreenOption({ ...screenOptions, ...newOptions })
   }
@@ -17,15 +17,6 @@ const Screen = props => {
     navigation: { ...navigation, setOptions: handleSetScreenOption }
   }
 
-  const handleClickRightAction = () => {
-    if (rightAction && typeof rightAction !== 'function') {
-      console.error('rightAction should be a function')
-      return null
-    }
-
-    rightAction()
-  }
-
   const header = () => {
     if (headerRenderer) return headerRenderer(screenOptions)
     if (isMain) return null
@@ -33,13 +24,13 @@ const Screen = props => {
 
     return (
       <AppHeader
+        testID={name}
         title={title || name}
         subTitle={subTitle}
-        leftDisable={isMain}
+        titleLeft={titleLeft}
         leftIcon={'fas fa-arrow-left'}
         onClickLeft={() => navigation.goBack()}
-        rightIcon={rightIcon}
-        onClickRight={handleClickRightAction}
+        rightActions={rightActions}
       />
     )
   }

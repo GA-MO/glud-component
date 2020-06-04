@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import AppHeader from '../AppHeader'
 import { useTransition, animated } from 'react-spring/web.cjs'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 import useModalOpenInMobileLayout from '../useModalOpenInMobileLayout'
 
 const MobileModalFullscreen = ({
+  testID,
   title,
   show,
   leftIcon,
@@ -56,6 +56,7 @@ const MobileModalFullscreen = ({
                 <div className='modal-wrapper'>
                   {!headerDisabled && (
                     <AppHeader
+                      testID={testID}
                       title={title}
                       leftIcon={leftIcon}
                       onClickLeft={onClickLeft}
@@ -74,6 +75,7 @@ const MobileModalFullscreen = ({
 }
 
 MobileModalFullscreen.propTypes = {
+  testID: PropTypes.string,
   title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   wrap: PropTypes.bool.isRequired,
@@ -85,6 +87,7 @@ MobileModalFullscreen.propTypes = {
 }
 
 MobileModalFullscreen.defaultProps = {
+  testID: 'modal-fullscreen',
   title: 'Modal Title',
   show: false,
   wrap: false,
@@ -95,26 +98,6 @@ MobileModalFullscreen.defaultProps = {
 }
 
 export default MobileModalFullscreen
-
-const btnCloseWithLabel = css`
-  .nav-right {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 15px 0;
-
-    i {
-      padding: 0px;
-      padding-left: 5px;
-    }
-
-    &:before {
-      content: 'Close';
-      font-size: 11px;
-      font-weight: bold;
-    }
-  }
-`
 
 const Style = styled.div`
   label: MobileModalFullscreen;
@@ -143,10 +126,6 @@ const Style = styled.div`
 
   .app-header {
     flex-shrink: 0;
-
-    @media screen and (min-width: 700px) {
-      ${props => !props.wrap && btnCloseWithLabel}
-    }
   }
 
   .wrap-content {
