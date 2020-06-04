@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import get from 'lodash/get'
+import { useTransition, animated } from 'react-spring/web.cjs'
 
 const createStateBackup = () => {
   let state = {}
@@ -137,28 +138,84 @@ const Navigator = props => {
     return null
   }
 
+  const transitions = useTransition(screenStack, item => item.name, {
+    from: item => {
+      return {
+        willChange: 'all',
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 10,
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        overflow: 'hidden',
+        transform: screenStack.length === 1 ? 'translate3d(0%, 0, 0)' : 'translate3d(100%, 0, 0)',
+        backgroundColor: '#fff',
+        boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)'
+      }
+    },
+    update: item => {
+      const isLastScreen = () => {
+        const currentScreenName = screenStack[screenStack.length - 1].name
+        if (screenStack.length === 1) return true
+        if (item.name === currentScreenName) return true
+        return false
+      }
+
+      if (isLastScreen()) {
+        return {
+          transform: 'translate3d(0%, 0, 0)'
+        }
+      }
+
+      return {
+        transform: 'translate3d(-10%, 0, 0)'
+      }
+    },
+    enter: {
+      transform: 'translate3d(0%, 0, 0)'
+    },
+    leave: {
+      transform: 'translate3d(100%, 0, 0)'
+    },
+    config: { mass: 1, tension: 1000, friction: 70 }
+  })
+
   return (
     <Style>
-      {props.initialScreen}
-      {screenStack.map((screen, i) => {
-        const screenToRender = getScreen(screen.name)
-        const navigationProps = {
-          navigate,
-          push,
-          replace: replace(i),
-          goBack: goBack(i),
-          setParams: setParams(i),
-          reset
+      {transitions.map(
+        ({ item, key, props }, i) => {
+          const screenToRender = getScreen(item.name)
+          const navigationProps = {
+            navigate,
+            push,
+            replace: replace(i),
+            goBack: goBack(i),
+            setParams: setParams(i),
+            reset
+          }
+          const propsToInject = {
+            key: item.name,
+            isMain: i === 0,
+            ...screenToRender.props,
+            params: item.params,
+            navigation: navigationProps
+          }
+          const screen = React.cloneElement(screenToRender, propsToInject)
+
+          if (item) {
+            return (
+              <animated.div key={key} style={props}>
+                {screen}
+              </animated.div>
+            )
+          }
+
+          return null
         }
-        const propsToInject = {
-          key: screen.name,
-          isMain: i === 0,
-          ...screenToRender.props,
-          params: screen.params,
-          navigation: navigationProps
-        }
-        return React.cloneElement(screenToRender, propsToInject)
-      })}
+      )}
     </Style>
   )
 }
