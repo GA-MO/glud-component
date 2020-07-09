@@ -1,5 +1,5 @@
 # glud-component
-React Components [UI Documents](http://glud-component.now.sh/)
+React Components [UI Documents](https://glud-component.vercel.app/)
 
 #### Install with npm
 
