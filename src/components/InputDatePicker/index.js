@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import DateRangePicker from '../InputDateRangePicker/react-daterange-picker'
 import Input from '../Input'
@@ -96,23 +97,8 @@ export default class InputDatePicker extends Component {
       maximumDate
     } = this.props
 
-    return (
+    const datePickerRenderer = (
       <Fragment>
-        <Input
-          testID={testID}
-          ref={input => (this.input = input)}
-          onlyContain={onlyContain}
-          label={label}
-          name={name}
-          isRequired={isRequired}
-          isSuccess={isSuccess}
-          isError={isError}
-          disabled={disabled}
-          message={message}
-          onFocus={this.handleInputFocus}
-          value={dateValue ? dateValue.format(format) : ''}
-          iconRight={() => <i className='fas fa-calendar' />}
-        />
         {isShowCalendar && (
           <div className='box-datarange-wrapper show'>
             <a
@@ -131,6 +117,27 @@ export default class InputDatePicker extends Component {
             />
           </div>
         )}
+      </Fragment>
+    )
+
+    return (
+      <Fragment>
+        <Input
+          testID={testID}
+          ref={input => (this.input = input)}
+          onlyContain={onlyContain}
+          label={label}
+          name={name}
+          isRequired={isRequired}
+          isSuccess={isSuccess}
+          isError={isError}
+          disabled={disabled}
+          message={message}
+          onFocus={this.handleInputFocus}
+          value={dateValue ? dateValue.format(format) : ''}
+          iconRight={() => <i className='fas fa-calendar' />}
+        />
+        {ReactDOM.createPortal(datePickerRenderer, document.body)}
       </Fragment>
     )
   }

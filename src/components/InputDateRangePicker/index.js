@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import DateRangePicker from './react-daterange-picker'
 import get from 'lodash/get'
@@ -104,23 +105,8 @@ export default class InputDateRangePicker extends Component {
     const endDate = get(dateRangeValue, 'end', null)
     const value = dateRangeValue ? `${startDate.format(format)} - ${endDate.format(format)}` : ''
 
-    return (
+    const datePickerRenderer = (
       <Fragment>
-        <Input
-          testID={testID}
-          ref={input => (this.input = input)}
-          onlyContain={onlyContain}
-          label={label}
-          name={name}
-          isRequired={isRequired}
-          isSuccess={isSuccess}
-          isError={isError}
-          disabled={disabled}
-          message={message}
-          onFocus={this.handleInputFocus}
-          value={value}
-          iconRight={() => <i className='fas fa-calendar' />}
-        />
         {isShowCalendar && (
           <div className='box-datarange-wrapper show'>
             <a
@@ -140,6 +126,27 @@ export default class InputDateRangePicker extends Component {
             />
           </div>
         )}
+      </Fragment>
+    )
+
+    return (
+      <Fragment>
+        <Input
+          testID={testID}
+          ref={input => (this.input = input)}
+          onlyContain={onlyContain}
+          label={label}
+          name={name}
+          isRequired={isRequired}
+          isSuccess={isSuccess}
+          isError={isError}
+          disabled={disabled}
+          message={message}
+          onFocus={this.handleInputFocus}
+          value={value}
+          iconRight={() => <i className='fas fa-calendar' />}
+        />
+        {ReactDOM.createPortal(datePickerRenderer, document.body)}
       </Fragment>
     )
   }
