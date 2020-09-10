@@ -27,6 +27,12 @@ export default class Switch extends PureComponent {
     isChecked: this.props.checked
   }
 
+  componentWillReceiveProps = nextProps => {
+    this.setState({
+      isChecked: nextProps.checked
+    })
+  }
+
   handleCheckboxChange = () => {
     const { onToggle } = this.props
     this.setState(prevState => ({ isChecked: !prevState.isChecked }))
