@@ -4,6 +4,9 @@
 .tabs li {
   background: #fff;
 }
+.tabs li a {
+  font-weight: bold;
+}
 .tabs li.is-active a {
   border-bottom-color: $primary;
   color: $primary;
