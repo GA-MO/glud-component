@@ -14,6 +14,7 @@ class Tab extends PureComponent {
     fullwidth: PropTypes.bool,
     fullwidthEqualSized: PropTypes.bool,
     small: PropTypes.bool,
+    medium: PropTypes.bool,
     large: PropTypes.bool,
     boxed: PropTypes.bool,
     /**
@@ -55,6 +56,7 @@ class Tab extends PureComponent {
       fullwidth,
       fullwidthEqualSized,
       small,
+      medium,
       large,
       boxed,
       children
@@ -65,6 +67,7 @@ class Tab extends PureComponent {
       'is-right': right,
       'is-fullwidth': fullwidth || fullwidthEqualSized,
       'is-small': small,
+      'is-medium': medium,
       'is-large': large,
       'is-boxed': boxed,
       equal: fullwidthEqualSized
