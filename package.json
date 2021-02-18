@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.12.8",
+  "version": "1.12.9",
   "description": "",
   "repository": {
     "url": "",
@@ -25,7 +25,6 @@
     "test": "npm run lint && better-npm-run test",
     "test:watch": "better-npm-run test:watch",
     "lint": "eslint ./src",
-    "prepublish": "npm run build:lib && npm run build && npm run styleguide:build",
     "postpublish": "npm run deploy",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
@@ -122,7 +121,7 @@
     "html-webpack-plugin": "^2.28.0",
     "ignore-styles": "^5.0.1",
     "mocha": "^3.2.0",
-    "node-sass": "^4.5.0",
+    "node-sass": "^5.0.0",
     "promise-polyfill": "^7.1.2",
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
