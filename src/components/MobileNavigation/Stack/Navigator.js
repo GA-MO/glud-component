@@ -150,10 +150,8 @@ const Navigator = props => {
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'hidden',
         transform: screenStack.length === 1 ? 'translate3d(0%, 0, 0)' : 'translate3d(100%, 0, 0)',
-        backgroundColor: '#fff',
-        boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)'
+        backgroundColor: '#fff'
       }
     },
     update: item => {
