@@ -1,6 +1,6 @@
 {
   "name": "glud-component",
-  "version": "1.12.10",
+  "version": "1.12.11",
   "description": "",
   "repository": {
     "url": "",
@@ -25,6 +25,7 @@
     "test": "npm run lint && better-npm-run test",
     "test:watch": "better-npm-run test:watch",
     "lint": "eslint ./src",
+    "prepublish": "npm run build:lib && npm run build && npm run styleguide:build",
     "postpublish": "npm run deploy",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
