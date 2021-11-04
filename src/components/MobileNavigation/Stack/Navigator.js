@@ -29,6 +29,7 @@ const Navigator = props => {
 
     if (props.initialScreen) {
       const initialScreenData = {
+        key: Date.now(),
         name: props.initialScreen,
         params: {}
       }
@@ -38,6 +39,7 @@ const Navigator = props => {
     const firstScreen = get(props, 'children[0].props.name', null)
     if (firstScreen) {
       const screenData = {
+        key: Date.now(),
         name: firstScreen,
         params: {}
       }
@@ -65,7 +67,7 @@ const Navigator = props => {
       return
     }
 
-    const newScreen = { name: screenName, params }
+    const newScreen = { key: Date.now(), name: screenName, params }
     const isExisting = screenStack.some(screen => screen.name === screenName)
 
     const getPreviosScreens = () => {
@@ -95,12 +97,12 @@ const Navigator = props => {
       return
     }
 
-    const newScreen = { name: screenName, params }
+    const newScreen = { key: Date.now(), name: screenName, params }
     setScreenStack([...screenStack, newScreen])
   }
 
   const replace = index => (screenName, params = {}) => {
-    const newScreen = { name: screenName, params }
+    const newScreen = { key: Date.now(), name: screenName, params }
     const newScreenStack = screenStack.filter((stack, i) => i !== index)
     setScreenStack([...newScreenStack, newScreen])
   }
@@ -138,7 +140,7 @@ const Navigator = props => {
     return null
   }
 
-  const transitions = useTransition(screenStack, item => item.name, {
+  const transitions = useTransition(screenStack, item => item.key, {
     from: item => {
       return {
         willChange: 'all',
@@ -156,9 +158,9 @@ const Navigator = props => {
     },
     update: item => {
       const isLastScreen = () => {
-        const currentScreenName = screenStack[screenStack.length - 1].name
+        const currentScreenName = screenStack[screenStack.length - 1].key
         if (screenStack.length === 1) return true
-        if (item.name === currentScreenName) return true
+        if (item.key === currentScreenName) return true
         return false
       }
 
@@ -194,8 +196,9 @@ const Navigator = props => {
             setParams: setParams(i),
             reset
           }
+          console.log('item', item)
           const propsToInject = {
-            key: item.name,
+            key: item.key,
             isMain: i === 0,
             ...screenToRender.props,
             params: item.params,
