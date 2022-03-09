@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import DateRangePicker from './react-daterange-picker'
 import get from 'lodash/get'
 import Input from '../Input'
-import Moment from 'moment'
-import { extendMoment } from 'moment-range'
+// import Moment from 'moment'
+// import { extendMoment } from 'moment-range'
 import customTyeps from './customTyeps-util'
 
-const moment = extendMoment(Moment)
+// const moment = extendMoment(Moment)
 
 export default class InputDateRangePicker extends Component {
   static propTypes = {
@@ -24,6 +24,7 @@ export default class InputDateRangePicker extends Component {
     format: PropTypes.string,
     value: PropTypes.oneOfType([customTyeps.momentRange, PropTypes.oneOf([null])]),
     onChange: PropTypes.func,
+    onSelectStart: PropTypes.func,
     onFocus: PropTypes.func,
     maximumDate: PropTypes.instanceOf(Date),
     minimumDate: PropTypes.instanceOf(Date)
@@ -33,8 +34,9 @@ export default class InputDateRangePicker extends Component {
     testID: 'input-date-picker-range',
     format: 'DD/MM/YYYY',
     onChange: () => null,
+    onSelectStart: () => null,
     onFocus: () => null,
-    value: moment.range(moment().startOf('days'), moment().add(1, 'days'))
+    value: null
   }
 
   state = {
@@ -50,7 +52,8 @@ export default class InputDateRangePicker extends Component {
 
   componentWillReceiveProps = nextProps => {
     this.setState({
-      dateRangeValue: nextProps.value
+      dateRangeValue: nextProps.value,
+      start: null
     })
   }
 
@@ -65,11 +68,19 @@ export default class InputDateRangePicker extends Component {
   }
 
   handSelectDate = dateRangeValue => {
-    this.setState({
-      dateRangeValue
-    })
     this.props.onChange(dateRangeValue)
+
+    if (this.props.value === null) {
+      this.setState({
+        dateRangeValue
+      })
+    }
+
     this.onCloseDatePicker()
+  }
+
+  handSelectStartDate = startDateValue => {
+    this.props.onSelectStart(startDateValue)
   }
 
   onShowDatePicker = () => {
@@ -123,6 +134,7 @@ export default class InputDateRangePicker extends Component {
               maximumDate={maximumDate}
               value={dateRangeValue}
               onSelect={this.handSelectDate}
+              onSelectStart={this.handSelectStartDate}
             />
           </div>
         )}

@@ -23,6 +23,14 @@ Example initial value
   const start = Moment().startOf('day')
   const end = Moment().add(1, 'days')
   const initialValue = Moment.range(start, end);
+
+  initialState = {
+    value: initialValue
+  };
   
-  <InputDateRangePicker label='Select Date' value={initialValue} />
+  <InputDateRangePicker
+  	label='Select Date'
+    value={state.value}
+    onChange={(v) => setState({ value: v })}
+  />
 ```
